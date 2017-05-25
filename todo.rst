@@ -2,6 +2,8 @@
 Todo
 ****
 
+**NOTE: see Github issues. The below is out of date.**
+
 Data analysis
 =============
 
@@ -10,8 +12,6 @@ Outline
 
 Observational interest in clean meat
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
 
 
 Attitudinal barriers to support for clean meat.
