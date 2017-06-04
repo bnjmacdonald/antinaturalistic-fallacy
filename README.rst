@@ -9,4 +9,3 @@ This project examines the effects of negative social information and pro-clean m
 | Link to github: https://github.com/bnjmacdonald/antinaturalistic_fallacy
 | Link to documentation: <NA>
 
-
