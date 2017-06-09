@@ -465,6 +465,7 @@ effects_appeal2$outcome <- to_title(str_replace(rownames(effects_appeal2), paste
 effects_appeal3$outcome <- to_title(str_replace(rownames(effects_appeal3), paste0(suffix, '$'), ''))
 
 effects_appeals <- rbind(effects_appeal1, effects_appeal2, effects_appeal3)
+effects_appeals$term <- to_title(str_replace(effects_appeals$term, '(\\d)', ' \\1'))
 effects_appeals$term <- factor(effects_appeals$term)
 rownames(effects_appeals) <- NULL
 
@@ -476,12 +477,12 @@ effects_appeals[,colnames(ci)[1]] <- ci[,1]
 effects_appeals[,colnames(ci)[2]] <- ci[,2]
 
 p1 <- gg_coefplot(effects_appeals, color=effects_appeals$term) + 
-    facet_wrap(~term, scales='fixed') + 
+    facet_wrap(~term, scales='fixed', ncol=1) + 
     theme(strip.background = element_blank()) + 
     guides(color=FALSE)
     # labs(title='Appeal 1') +
 fname <- 'effects_appeals_interest.png'
-ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p1, width=width, height=height-7, units="cm", dpi=dpi)
+ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p1, width=width, height=height, units="cm", dpi=dpi)
 
 
 
@@ -500,6 +501,7 @@ effects_appeal3$outcome <- to_title(str_replace(rownames(effects_appeal3), paste
 
 effects_appeals <- rbind(effects_appeal1, effects_appeal2, effects_appeal3)
 effects_appeals$outcome <- str_replace(effects_appeals$outcome, '^Concern ', '')
+effects_appeals$term <- to_title(str_replace(effects_appeals$term, '(\\d)', ' \\1'))
 effects_appeals$term <- factor(effects_appeals$term)
 rownames(effects_appeals) <- NULL
 
@@ -511,11 +513,11 @@ effects_appeals[,colnames(ci)[1]] <- ci[,1]
 effects_appeals[,colnames(ci)[2]] <- ci[,2]
 
 p1 <- gg_coefplot(effects_appeals, color=effects_appeals$term) + 
-    facet_wrap(~term, scales='fixed') + 
+    facet_wrap(~term, scales='fixed', ncol=1) + 
     theme(strip.background = element_blank()) + 
     guides(color=FALSE)
 fname <- 'effects_appeals_concerns.png'
-ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p1, width=width, height=height-7, units="cm", dpi=dpi)
+ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p1, width=width, height=height, units="cm", dpi=dpi)
 
 
 # EFFECTS ON BENEFITS
@@ -533,6 +535,7 @@ effects_appeal3$outcome <- to_title(str_replace(rownames(effects_appeal3), paste
 
 effects_appeals <- rbind(effects_appeal1, effects_appeal2, effects_appeal3)
 effects_appeals$outcome <- str_replace(effects_appeals$outcome, '^Benefit ', '')
+effects_appeals$term <- to_title(str_replace(effects_appeals$term, '(\\d)', ' \\1'))
 effects_appeals$term <- factor(effects_appeals$term)
 rownames(effects_appeals) <- NULL
 
@@ -565,6 +568,7 @@ effects_appeal2$outcome <- to_title(str_replace(rownames(effects_appeal2), paste
 effects_appeal3$outcome <- to_title(str_replace(rownames(effects_appeal3), paste0(suffix, '$'), ''))
 
 effects_appeals <- rbind(effects_appeal1, effects_appeal2, effects_appeal3)
+effects_appeals$term <- to_title(str_replace(effects_appeals$term, '(\\d)', ' \\1'))
 effects_appeals$term <- factor(effects_appeals$term)
 rownames(effects_appeals) <- NULL
 
@@ -598,6 +602,7 @@ effects_appeal2$outcome <- to_title(str_replace(rownames(effects_appeal2), paste
 effects_appeal3$outcome <- to_title(str_replace(rownames(effects_appeal3), paste0(suffix, '$'), ''))
 
 effects_appeals <- rbind(effects_appeal1, effects_appeal2, effects_appeal3)
+effects_appeals$term <- to_title(str_replace(effects_appeals$term, '(\\d)', ' \\1'))
 effects_appeals$term <- factor(effects_appeals$term)
 rownames(effects_appeals) <- NULL
 
@@ -643,6 +648,7 @@ effects_appeal1$outcome <- str_replace(rownames(effects_appeal1), paste0(suffix,
 effects_appeal2$outcome <- str_replace(rownames(effects_appeal2), paste0(suffix, '$'), '')
 effects_appeal3$outcome <- str_replace(rownames(effects_appeal3), paste0(suffix, '$'), '')
 effects_appeals <- rbind(effects_appeal1, effects_appeal2, effects_appeal3)
+effects_appeals$term <- to_title(str_replace(effects_appeals$term, '(\\d)', ' \\1'))
 effects_appeals$term <- factor(effects_appeals$term)
 rownames(effects_appeals) <- NULL
 
