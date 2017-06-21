@@ -27,3 +27,14 @@ print(length(mturkids_uniq))
 
 # saves mturk ids to csv
 write.csv(mturkids_uniq, paste(out_path, "mturkids_wave2.csv", sep='/'), row.names=FALSE)
+
+# temporary:
+# df_inc <- read.csv(paste(out_path, "mturkids_wave2_incomplete.csv", sep='/'), stringsAsFactors=FALSE)
+# mturkids_inc <- df_inc$x
+# stopifnot(all(mturkids_inc %in% mturkids_uniq))
+# mturkids_extra <- setdiff(mturkids_uniq, mturkids_inc)
+# stopifnot(length(unique(mturkids_extra)) == length(mturkids_extra))
+# stopifnot(length(mturkids_extra) + length(mturkids_inc) == length(mturkids_uniq))
+# print(length(mturkids_extra))
+
+# write.csv(mturkids_extra, paste(out_path, "mturkids_wave2_extra.csv", sep='/'), row.names=FALSE)

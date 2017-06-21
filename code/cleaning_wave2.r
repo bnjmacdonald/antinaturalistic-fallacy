@@ -17,8 +17,9 @@ tab <- function(..., exclude=NULL) table(..., exclude=exclude)
 
 # reads in treatment wave data.
 
+# df <- read_csv_qualtrics('../data/raw/naturalistic_fallacy_treatment.csv')
 df2 <- read_csv_qualtrics('../data/raw/naturalistic_fallacy_treatment.csv')
-colnames(df2)
+# all(colnames(df2) == colnames(df))
 dim(df2)
 
 # renames MTurkCode variable, since it actually represents completion code.
