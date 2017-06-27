@@ -325,6 +325,81 @@ df2[,'entered_email'] <- as.integer(!is.na(df2[,'Q199_1_TEXT']))
 # tab(df2[,'entered_email'])
 
 
+# OTHER VARIABLES
+
+# [veg_moral] Q21, Q175: "Some people say that eating vegetarian food is morally preferable to eating meat produced via fac..."
+# NOTE: this question was asked twice in the same survey.
+var_names_dict[['Q21']] <- 'veg_moral'
+tab(df1$Q21)
+tab(df2$Q21)
+tab(df1$Q175)
+unique(df1$Q21, na.rm=FALSE)
+temp1_Q21 <- as.numeric(ordered(df1$Q21, levels=c("Strongly disagree", "Disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Agree", "Strongly agree")))
+temp2_Q21 <- as.numeric(ordered(df2$Q21, levels=c("Strongly disagree", "Disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Agree", "Strongly agree")))
+tab(df1$Q21, temp1_Q21)
+tab(df2$Q21, temp2_Q21)
+df1$Q21 <- temp1_Q21
+df2$Q21 <- temp2_Q21
+
+# [sentient] Q23, Q177: "Do you think that farm animals are sentient (feel pleasure or pain)?"
+# NOTE: this question was asked twice in the same survey.
+var_names_dict[['Q23']] <- 'sentient'
+tab(df1$Q23)
+tab(df2$Q23)
+tab(df1$Q177)
+unique(df1$Q23, na.rm=FALSE)
+temp1_Q23 <- as.numeric(ordered(df1$Q23, levels=c('Definitely not', 'Probably not', 'Might or might not', 'Probably yes', 'Definitely yes')))
+temp2_Q23 <- as.numeric(ordered(df2$Q23, levels=c('Definitely not', 'Probably not', 'Might or might not', 'Probably yes', 'Definitely yes')))
+tab(df1$Q23, temp1_Q23)
+tab(df2$Q23, temp2_Q23)
+df1$Q23 <- temp1_Q23
+df2$Q23 <- temp2_Q23
+
+
+# [harms] Q25, Q179: "How much do you think conventional meat production harms animals?"
+# NOTE: this question was asked twice in the same survey.
+var_names_dict[['Q25']] <- 'harms'
+tab(df1$Q25)
+tab(df2$Q25)
+tab(df1$Q179)
+unique(df1$Q25, na.rm=FALSE)
+temp1_Q25 <- as.numeric(ordered(df1$Q25, levels=c('Not at all', 'A little', 'A moderate amount', 'A lot', 'A great deal')))
+temp2_Q25 <- as.numeric(ordered(df2$Q25, levels=c('Not at all', 'A little', 'A moderate amount', 'A lot', 'A great deal')))
+tab(df1$Q25, temp1_Q25)
+tab(df2$Q25, temp2_Q25)
+df1$Q25 <- temp1_Q25
+df2$Q25 <- temp2_Q25
+
+
+# [harms_concern] Q27, Q181: "How concerned are you about this harm?"
+# NOTE: this question was asked twice in the same survey.
+var_names_dict[['Q27']] <- 'harms_concern'
+tab(df1$Q27)
+tab(df2$Q27)
+tab(df1$Q181)
+unique(df1$Q27, na.rm=FALSE)
+temp1_Q27 <- as.numeric(ordered(df1$Q27, levels=c('Not at all', 'A little', 'A moderate amount', 'A lot', 'A great deal')))
+temp2_Q27 <- as.numeric(ordered(df2$Q27, levels=c('Not at all', 'A little', 'A moderate amount', 'A lot', 'A great deal')))
+tab(df1$Q27, temp1_Q27)
+tab(df2$Q27, temp2_Q27)
+df1$Q27 <- temp1_Q27
+df2$Q27 <- temp2_Q27
+
+
+# [perceived_reduce] Q393: 
+# Please indicate the degree to which you agree or disagree with the following 
+# statements.-More and more people in the U.S. are reducing their meat
+# consumption.
+var_names_dict[['Q393']] <- 'perceived_reduce'
+tab(df1$Q393)
+tab(df2$Q393)
+unique(df1$Q393, na.rm=FALSE)
+temp1_Q393 <- as.numeric(ordered(df1$Q393, levels=c("Strongly disagree", "Disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Agree", "Strongly agree")))
+temp2_Q393 <- as.numeric(ordered(df2$Q393, levels=c("Strongly disagree", "Disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Agree", "Strongly agree")))
+tab(df1$Q393, temp1_Q393)
+tab(df2$Q393, temp2_Q393)
+df1$Q393 <- temp1_Q393
+df2$Q393 <- temp2_Q393
 
 
 # DEMOGRAPHICS

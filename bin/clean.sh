@@ -2,4 +2,5 @@
 
 Rscript cleaning_wave1.r
 Rscript cleaning_wave2.r
+Rscript cleaning_wave3.r
 Rscript merging_waves.r

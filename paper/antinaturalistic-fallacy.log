@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 JUN 2017 21:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 JUN 2017 01:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -281,8 +281,6 @@ Package: chngpage 2009/10/20 v1.2b change page layout
 \f@ncyO@erf=\skip74
 \f@ncyO@olf=\skip75
 \f@ncyO@orf=\skip76
-) (/usr/local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
-Package: parskip 2001/04/09 non-zero parskip adjustments
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count125
 \lst@gtempboxa=\box31
@@ -605,13 +603,6 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [5]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 274.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 274.
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
@@ -628,68 +619,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7] <../output/figures/barrier_concerns.png, id=146, 2054.67625pt x 553.06625pt
->
+[7] <../output/figures/barrier_concerns.png, id=145, 1263.72125pt x 947.54pt>
 File: ../output/figures/barrier_concerns.png Graphic file (type png)
 <use ../output/figures/barrier_concerns.png>
 Package pdftex.def Info: ../output/figures/barrier_concerns.png used on input l
-ine 331.
-(pdftex.def)             Requested size: 396.76001pt x 106.79681pt.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 333.
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8 <../output/figures/barrier_concerns.png>] <../output/figures/effects_social.
-png, id=160, 1263.72125pt x 1263.72125pt>
-File: ../output/figures/effects_social.png Graphic file (type png)
-<use ../output/figures/effects_social.png>
-Package pdftex.def Info: ../output/figures/effects_social.png used on input lin
-e 359.
-(pdftex.def)             Requested size: 352.6793pt x 352.68257pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[9]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[10 <../output/figures/effects_social.png>]
-<../output/figures/effects_appeals_interest.png, id=174, 1263.72125pt x 947.54p
-t>
-File: ../output/figures/effects_appeals_interest.png Graphic file (type png)
-<use ../output/figures/effects_appeals_interest.png>
-Package pdftex.def Info: ../output/figures/effects_appeals_interest.png used on
- input line 383.
+ine 356.
 (pdftex.def)             Requested size: 308.59187pt x 231.37581pt.
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[11
-
- <../output/figures/effects_appeals_interest.png>]
-<../output/figures/effects_appeals_concerns.png, id=183, 1263.72125pt x 947.54p
-t>
-File: ../output/figures/effects_appeals_concerns.png Graphic file (type png)
-<use ../output/figures/effects_appeals_concerns.png>
-Package pdftex.def Info: ../output/figures/effects_appeals_concerns.png used on
- input line 404.
-(pdftex.def)             Requested size: 352.6793pt x 264.4419pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 358.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -699,20 +636,60 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12]
+[8]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[13 <../output/figures/effects_appeals_concerns.png>]
-<../output/figures/subgroup_effects_meat.png, id=202, 1263.72125pt x 1343.0175p
-t>
-File: ../output/figures/subgroup_effects_meat.png Graphic file (type png)
-<use ../output/figures/subgroup_effects_meat.png>
-Package pdftex.def Info: ../output/figures/subgroup_effects_meat.png used on in
-put line 441.
+[9 <../output/figures/barrier_concerns.png>]
+Overfull \hbox (4.15294pt too wide) in paragraph at lines 384--385
+[]\OT1/ptm/m/n/12 Despite some at-ten-u-a-tion, these ef-fects per-sist when ex
+-am-in-ing the cor-re-spond-ing changes
+ []
+
+<../output/figures/effects.png, id=162, 1738.495pt x 2528.44624pt>
+File: ../output/figures/effects.png Graphic file (type png)
+<use ../output/figures/effects.png>
+Package pdftex.def Info: ../output/figures/effects.png used on input line 419.
+(pdftex.def)             Requested size: 396.76001pt x 577.01645pt.
+
+LaTeX Warning: Float too large for page by 64.24399pt on input line 423.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11 <../output/figures/effects.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12
+
+]
+<../output/figures/subgroup_effects_meat_chg_1_3.png, id=184, 1263.72125pt x 13
+43.0175pt>
+File: ../output/figures/subgroup_effects_meat_chg_1_3.png Graphic file (type pn
+g)
+<use ../output/figures/subgroup_effects_meat_chg_1_3.png>
+Package pdftex.def Info: ../output/figures/subgroup_effects_meat_chg_1_3.png us
+ed on input line 526.
 (pdftex.def)             Requested size: 308.59187pt x 327.9458pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -723,33 +700,29 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[14]
+[13]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[15 <../output/figures/subgroup_effects_meat.png>]
-Overfull \hbox (1.52788pt too wide) in paragraph at lines 562--563
-[]\OT1/ptm/m/n/12 Overall, we show that sim-ple ``de-bunk-ing'' ap-peals aimed 
-at com-bat-ing the nat-u-ral-is-tic heuris-
- []
-
-<../output/figures/interest.png, id=218, 1659.19875pt x 553.06625pt>
+[14 <../output/figures/subgroup_effects_meat_chg_1_3.png>] <../output/figures/i
+nterest.png, id=201, 1659.19875pt x 553.06625pt>
 File: ../output/figures/interest.png Graphic file (type png)
 <use ../output/figures/interest.png>
-Package pdftex.def Info: ../output/figures/interest.png used on input line 577.
+Package pdftex.def Info: ../output/figures/interest.png used on input line 669.
 
 (pdftex.def)             Requested size: 396.76001pt x 132.24913pt.
 
-<../output/figures/subgroup_effects_interest.png, id=219, 1263.72125pt x 947.54
-pt>
-File: ../output/figures/subgroup_effects_interest.png Graphic file (type png)
-<use ../output/figures/subgroup_effects_interest.png>
-Package pdftex.def Info: ../output/figures/subgroup_effects_interest.png used o
-n input line 589.
-(pdftex.def)             Requested size: 308.59187pt x 231.37581pt.
+<../output/figures/subgroup_effects_interest_3.png, id=202, 1404.24625pt x 1404
+.24625pt>
+File: ../output/figures/subgroup_effects_interest_3.png Graphic file (type png)
+
+<use ../output/figures/subgroup_effects_interest_3.png>
+Package pdftex.def Info: ../output/figures/subgroup_effects_interest_3.png used
+ on input line 681.
+(pdftex.def)             Requested size: 308.59187pt x 308.5923pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -759,38 +732,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[16 <../output/figures/interest.png>]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 602.
-
-<../output/figures/subgroup_negative_agree_would_eat.png, id=225, 1263.72125pt 
-x 947.54pt>
-File: ../output/figures/subgroup_negative_agree_would_eat.png Graphic file (typ
+[15 <../output/figures/interest.png>]
+<../output/figures/subgroup_effects_negative_chg_1_3.png, id=208, 1738.495pt x 
+2132.96875pt>
+File: ../output/figures/subgroup_effects_negative_chg_1_3.png Graphic file (typ
 e png)
-<use ../output/figures/subgroup_negative_agree_would_eat.png>
-Package pdftex.def Info: ../output/figures/subgroup_negative_agree_would_eat.pn
-g used on input line 603.
-(pdftex.def)             Requested size: 211.60489pt x 158.65067pt.
-
-<../output/figures/subgroup_negative_agree_interest_purchase.png, id=226, 1263.
-72125pt x 947.54pt>
-File: ../output/figures/subgroup_negative_agree_interest_purchase.png Graphic f
-ile (type png)
-<use ../output/figures/subgroup_negative_agree_interest_purchase.png>
-Package pdftex.def Info: ../output/figures/subgroup_negative_agree_interest_pur
-chase.png used on input line 608.
-(pdftex.def)             Requested size: 211.60489pt x 158.65067pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-<../output/figures/subgroup_effects_negative.png, id=227, 1263.72125pt x 1343.0
-175pt>
-File: ../output/figures/subgroup_effects_negative.png Graphic file (type png)
-<use ../output/figures/subgroup_effects_negative.png>
-Package pdftex.def Info: ../output/figures/subgroup_effects_negative.png used o
-n input line 618.
-(pdftex.def)             Requested size: 308.59187pt x 327.9458pt.
+<use ../output/figures/subgroup_effects_negative_chg_1_3.png>
+Package pdftex.def Info: ../output/figures/subgroup_effects_negative_chg_1_3.pn
+g used on input line 710.
+(pdftex.def)             Requested size: 308.59187pt x 378.61275pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -800,62 +750,58 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[17 <../output/figures/subgroup_effects_interest.png> <../output/figures/subgro
-up_negative_agree_would_eat.png> <../output/figures/subgroup_negative_agree_int
-erest_purchase.png>]
+[16 <../output/figures/subgroup_effects_interest_3.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18 <../output/figures/subgroup_effects_negative.png>]
+[17 <../output/figures/subgroup_effects_negative_chg_1_3.png>]
 (/Users/bnjmacdonald/Documents/current/research-projects/antinaturalistic_falla
 cy/paper/antinaturalistic-fallacy.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 635.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 727.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[19
+[18
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 635.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 727.
 
 (/Users/bnjmacdonald/Documents/current/research-projects/antinaturalistic_falla
 cy/paper/antinaturalistic-fallacy.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 635.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 635.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 727.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 727.
 Package rerunfilecheck Info: File `antinaturalistic-fallacy.out' has not change
 d.
 (rerunfilecheck)             Checksum: 7D8F420AD3BA2E75B040205F925182D3;827.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 635.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 727.
  ) 
 Here is how much of TeX's memory you used:
- 11085 strings out of 493089
- 167843 string characters out of 6134842
- 277858 words of memory out of 5000000
- 14331 multiletter control sequences out of 15000+600000
- 39215 words of font info for 70 fonts, out of 8000000 for 9000
+ 11021 strings out of 493089
+ 165978 string characters out of 6134842
+ 277506 words of memory out of 5000000
+ 14285 multiletter control sequences out of 15000+600000
+ 36004 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,43p,2273b,548s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,43p,2275b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/urw/times/utmri8a.pfb>
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/urw/times/utmri8a.pfb>
 Output written on /Users/bnjmacdonald/Documents/current/research-projects/antin
-aturalistic_fallacy/paper/antinaturalistic-fallacy.pdf (19 pages, 726035 bytes)
+aturalistic_fallacy/paper/antinaturalistic-fallacy.pdf (18 pages, 754864 bytes)
 .
 PDF statistics:
- 289 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
- 147 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 127 words of extra memory for PDF output out of 10000 (max. 10000000)
 

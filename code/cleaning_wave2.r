@@ -2,7 +2,6 @@
 # This file reads in and cleans the raw survey data for wave 2 of the
 # anti-naturalistic fallacy survey experiment.
 
-# library(readstata13)
 source('utils.r')
 
 len <- length
