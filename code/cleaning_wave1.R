@@ -9,6 +9,8 @@
 # information at baseline.
 
 library(stringr)
+library(dplyr)
+
 
 # library(readstata13)
 source('utils.r')
@@ -400,6 +402,61 @@ tab(df1$Q393, temp1_Q393)
 tab(df2$Q393, temp2_Q393)
 df1$Q393 <- temp1_Q393
 df2$Q393 <- temp2_Q393
+
+
+# Discrete choice understanding (Q115): "You will now be asked some questions comparing clean meatballs, conventional meatballs, and veget..."
+var_names_dict[['Q115']] <- 'dce_understood'
+tab(df1$Q115)
+tab(df2$Q115)
+unique(df2$Q115, na.rm=FALSE)
+temp1_Q115 <- as.numeric(ordered(df1$Q115, levels=c('No', 'Somewhat', 'Yes')))
+temp2_Q115 <- as.numeric(ordered(df2$Q115, levels=c('No', 'Somewhat', 'Yes')))
+tab(df1$Q115, temp1_Q115)
+tab(df2$Q115, temp2_Q115)
+df1$Q115 <- temp1_Q115
+df2$Q115 <- temp2_Q115
+
+# Discrete choice (Q117 - Q139, every second Q): "Suppose you faced a choice between the following 3 products. Which would you buy?"
+dce_questions <- paste0('Q', seq(117, 139, 2))
+
+dce1 <- lapply(seq_along(dce_questions), FUN=function(i) {
+    d <- data.frame(str_split_fixed(str_replace_all(df1[, dce_questions[i]], "<[^>]*>", ""), ' \\/ \\$', 2), stringsAsFactors=FALSE)
+    colnames(d) <- paste0('dce_q', i, '_', c("product", "cost"))
+    d[d == ""] <- NA
+    d[,1] <- recode(d[,1], '1 lb. clean meatballs'='clean', '1 lb. conventional meatballs'='conventional', '1 lb. vegetarian meatballs'='vegetarian')
+    d[,2] <- as.numeric(d[,2])
+    if (any(rowSums(is.na(d)) == 1)) stop('Something went wrong with str_replace.')
+    return(d)
+})
+dce1 <- do.call('cbind', dce1)
+
+dce2 <- lapply(seq_along(dce_questions), FUN=function(i) {
+    d <- data.frame(str_split_fixed(str_replace_all(df2[, dce_questions[i]], "<[^>]*>", ""), ' \\/ \\$', 2), stringsAsFactors=FALSE)
+    colnames(d) <- paste0('dce_q', i, '_', c("product", "cost"))
+    d[d == ""] <- NA
+    d[,1] <- recode(d[,1], '1 lb. clean meatballs'='clean', '1 lb. conventional meatballs'='conventional', '1 lb. vegetarian meatballs'='vegetarian')
+    d[,2] <- as.numeric(d[,2])
+    if (any(rowSums(is.na(d)) == 1)) stop('Something went wrong with str_replace.')
+    return(d)
+})
+dce2 <- do.call('cbind', dce2)
+
+stopifnot(nrow(dce1) == nrow(df1))
+# if (any(!rowSums(is.na(dce1)) %in% c(12, 24))) stop('Problem with DCE cleaning.')
+tab(rowSums(is.na(dce1)))
+
+stopifnot(nrow(dce2) == nrow(df2))
+# if (any(!rowSums(is.na(dce2)) %in% c(12, 24))) stop('Problem with DCE cleaning.')
+tab(rowSums(is.na(dce2)))
+
+df1 <- cbind(df1, dce1)
+df2 <- cbind(df2, dce2)
+
+for (i in 1:len(colnames(dce1))) {
+    var_names_dict[[colnames(dce1)[i]]] <- colnames(dce1)[i]
+}
+
+# df1['Q141']
 
 
 # DEMOGRAPHICS

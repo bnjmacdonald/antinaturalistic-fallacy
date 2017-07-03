@@ -2,6 +2,8 @@
 # merges the wave 1 and wave 2 cleaned data.
 
 library(stringr)
+library(dplyr)
+library(tidyr)
 
 source('utils.r')
 
@@ -141,6 +143,56 @@ if (any(data_wave1[data_wave1[,'cultured_expose']==0, id_var] %in% data_wave2[,i
 data_wave1 = data_wave1[data_wave1[,'cultured_expose']==1,]
 
 
+# creates long discrete choice dataframe consisting of all three waves.
+dce_choices = read.csv('../data/other/dce_choices.csv', stringsAsFactor=FALSE, na.strings=c("NA", ""))
+
+# function: create_dce_df
+# description: creates a dataframe for the analysis of discrete choice
+# experiment. Each row in the returned dataframe is a single alternative in a
+# choice task faced by a respondent. For instance, if there are three
+# alternatives per choice and six choices in the entire discrete choice
+# experiment, then there are 18 rows per respondent.
+create_dce_df <- function(data, id_var, dce_vars, dce_choices) {
+    df_temp = data[, c(id_var, dce_vars)] %>% 
+        gather_(key_col='variable', value_col='value', gather_cols=colnames(data_wave3)[str_detect(colnames(data_wave3), '^dce_q')])
+    df_temp$question = as.numeric(str_replace(df_temp$variable, 'dce_q(\\d+)_.+', '\\1'))
+    df_temp$attribute = str_replace(df_temp$variable, 'dce_q\\d+_(.+)$', '\\1')
+    df_temp$variable = NULL
+    df_temp = df_temp %>%
+        spread_(key_col='attribute', value_col='value')
+    df_temp = df_temp[complete.cases(df_temp[,c('cost', 'product')]), ]
+    df_temp2 = apply(df_temp, MARGIN=1, FUN=function(x) {
+        choices <- dce_choices[dce_choices$question==as.numeric(x['question']),]
+        choices[,id_var] <- x[id_var]
+        choices$choice <- 0
+        choices$choice[choices$product == x['product'] & choices$cost == x['cost']] <- 1
+        stopifnot(sum(choices$choice) == 1)
+        return(choices)
+    })
+    df_temp2 = bind_rows(df_temp2)
+    return(df_temp2)
+}
+
+data_wave1_dce = create_dce_df(data_wave1, id_var, colnames(data_wave1)[str_detect(colnames(data_wave1), '^dce_q')], dce_choices)
+data_wave2_dce = create_dce_df(data_wave2, id_var, colnames(data_wave2)[str_detect(colnames(data_wave2), '^dce_q')], dce_choices)
+data_wave3_dce = create_dce_df(data_wave3, id_var, colnames(data_wave3)[str_detect(colnames(data_wave3), '^dce_q')], dce_choices)
+
+stopifnot(nrow(data_wave1_dce) == nrow(data_wave1) * 6 * 3)
+stopifnot(nrow(data_wave2_dce) == nrow(data_wave2) * 6 * 3)
+stopifnot(nrow(data_wave3_dce) == nrow(data_wave3) * 6 * 3)
+
+if (any(is.na(data_wave1_dce))) stop('Problem with DCE cleaning.')
+if (any(is.na(data_wave2_dce))) stop('Problem with DCE cleaning.')
+if (any(is.na(data_wave3_dce))) stop('Problem with DCE cleaning.')
+
+data_wave1_dce$wave = 1
+data_wave2_dce$wave = 2
+data_wave3_dce$wave = 3
+data_dce = bind_rows(data_wave1_dce, data_wave2_dce, data_wave3_dce)
+
+treatments = c('treat_article', 'treat_social')
+data_dce = left_join(data_dce, data_wave2[,c(id_var, treatments)], by=id_var)
+
 # renames columns using wave suffixes. This is cleaner than using the
 # 'suffixes' argument in merge() because of cases where the same variable
 # occurs across all waves, in only 2 waves, or in only 1 wave.
@@ -185,5 +237,6 @@ data_merged = create_chg_vars(data_merged, vars12, suffix1='_1', suffix2='_2')
 data_merged = create_chg_vars(data_merged, vars3, suffix1='_1', suffix2='_3')
 data_merged = create_chg_vars(data_merged, vars3, suffix1='_2', suffix2='_3')
 
-# saves merged data to disk.
-write.csv(data_merged, '../data/cleaned/all_waves_clean.csv')
+# saves merged data and dce data to disk.
+write.csv(data_dce, '../data/cleaned/dce_clean_long.csv', row.names=FALSE)
+write.csv(data_merged, '../data/cleaned/all_waves_clean.csv', row.names=FALSE)

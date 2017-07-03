@@ -8,6 +8,8 @@ library(broom)
 library(ggplot2)
 library(gridExtra)
 library(stringr)
+library(survival)
+library(lmtest)
 # library(lazyeval)
 
 len <- length
@@ -365,12 +367,21 @@ str(df)
 dim(df)
 colnames(df)
 
+# reads in cleaned discrete choice analysis data (long form).
+df_dce <- read.csv('../data/cleaned/dce_clean_long.csv', stringsAsFactors=FALSE)
+str(df_dce)
+dim(df_dce)
+colnames(df_dce)
+
 # counts number of missing values for each variable.
-sort(apply(df, MARGIN=2, FUN=function(x) sum(is.na(x))), decreasing=TRUE)
+# sort(apply(df, MARGIN=2, FUN=function(x) sum(is.na(x))), decreasing=TRUE)
 
 # converts treatments to factor variables.
 df$treat_social <- factor(df$treat_social)
 df$treat_article <- factor(df$treat_article)
+
+df_dce$treat_social <- factor(df_dce$treat_social)
+df_dce$treat_article <- factor(df_dce$treat_article)
 
 # colnames(df)
 treatments <- c('treat_article', 'treat_social')
@@ -460,7 +471,7 @@ ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p, width=width+5, hei
 # APPEAL EFFECTS
 # --------------
 
-suffix <- '_chg_1_3'
+suffix <- '_chg_1_3_std'
 
 # EFFECTS ON INTEREST IN CLEAN MEAT
 
@@ -499,6 +510,7 @@ ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p1, width=width, heig
 
 
 # EFFECTS ON CONCERNS
+suffix <- '_chg_1_3'
 outcomes <- paste0(concern_vars, suffix)
 coef_tables <- get_coef_tables(df, outcomes, treatments)
 
@@ -1663,3 +1675,207 @@ summary(lm(form, data=df_control))
 # TODO
 
 
+# DISCRETE CHOICE ANLAYSIS
+# ------------------------
+
+df_dce$product <- factor(df_dce$product, levels=c('conventional', 'clean', 'vegetarian'))
+df_dce$cost <- df_dce$cost / 5
+
+# clogit(choice ~ product*treat_article + cost + strata(MTurkCode), data=df_dce3)
+
+# clogit(choice ~ product + cost + strata(MTurkCode), data=df_dce3[df_dce3$treat_article == 0,])
+# clogit(choice ~ product + cost + strata(MTurkCode), data=df_dce3[df_dce3$treat_article == 1,])
+# clogit(choice ~ product + cost + strata(MTurkCode), data=df_dce3[df_dce3$treat_article == 2,])
+# clogit(choice ~ product + cost + strata(MTurkCode), data=df_dce3[df_dce3$treat_article == 3,])
+
+
+# mod = lm(choice ~ product*treat_article + cost*treat_article + product*treat_social + cost*treat_social, data=df_dce3)
+# coefs = coeftest(mod, cluster=df_dce3$MTurkCode)
+# print(coefs)
+
+# wave 2
+df_dce2 = df_dce[df_dce$wave == 2,]
+temp_data = df_dce2[df_dce2$treat_article == 0 ,]  # & df_dce2$treat_social == 0
+mod0 = lm(choice ~ product + cost, data=temp_data)
+coefs0 = coeftest(mod0, cluster=temp_data$MTurkCode)
+coefs0 = tidy(coefs0)
+coefs0$treat = 'Control'
+coefs0$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce2[df_dce2$treat_article == 1,]
+mod1 = lm(choice ~ product + cost, data=temp_data)
+coefs1 = coeftest(mod1, cluster=temp_data$MTurkCode)
+coefs1 = tidy(coefs1)
+coefs1$treat = 'Treat Article 1'
+coefs1$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce2[df_dce2$treat_article == 2,]
+mod2 = lm(choice ~ product + cost, data=temp_data)
+coefs2 = coeftest(mod2, cluster=temp_data$MTurkCode)
+coefs2 = tidy(coefs2)
+coefs2$treat = 'Treat Article 2'
+coefs2$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce2[df_dce2$treat_article == 3,]
+mod3 = lm(choice ~ product + cost, data=temp_data)
+coefs3 = coeftest(mod3, cluster=temp_data$MTurkCode)
+coefs3 = tidy(coefs3)
+coefs3$treat = 'Treat Article 3'
+coefs3$n = len(unique(temp_data$MTurkCode))
+
+dce_effects2 = bind_rows(coefs0, coefs1, coefs2, coefs3)
+dce_effects2$wave = 'Wave 2'
+
+# wave 3
+df_dce3 = df_dce[df_dce$wave == 3,]
+temp_data = df_dce3[df_dce3$treat_article == 0 ,]  # & df_dce3$treat_social == 0
+mod0 = lm(choice ~ product + cost, data=temp_data)
+coefs0 = coeftest(mod0, cluster=temp_data$MTurkCode)
+coefs0 = tidy(coefs0)
+coefs0$treat = 'Control'
+coefs0$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce3[df_dce3$treat_article == 1,]
+mod1 = lm(choice ~ product + cost, data=temp_data)
+coefs1 = coeftest(mod1, cluster=temp_data$MTurkCode)
+coefs1 = tidy(coefs1)
+coefs1$treat = 'Treat Article 1'
+coefs1$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce3[df_dce3$treat_article == 2,]
+mod2 = lm(choice ~ product + cost, data=temp_data)
+coefs2 = coeftest(mod2, cluster=temp_data$MTurkCode)
+coefs2 = tidy(coefs2)
+coefs2$treat = 'Treat Article 2'
+coefs2$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce3[df_dce3$treat_article == 3,]
+mod3 = lm(choice ~ product + cost, data=temp_data)
+coefs3 = coeftest(mod3, cluster=temp_data$MTurkCode)
+coefs3 = tidy(coefs3)
+coefs3$treat = 'Treat Article 3'
+coefs3$n = len(unique(temp_data$MTurkCode))
+
+dce_effects3 = bind_rows(coefs0, coefs1, coefs2, coefs3)
+dce_effects3$wave = 'Wave 3'
+
+dce_effects = bind_rows(dce_effects2, dce_effects3)
+
+dce_effects = dce_effects[dce_effects$term!='(Intercept)',]
+dce_effects$term = recode(dce_effects$term, 'productclean'='Clean meatballs', 'productvegetarian'='Vegetarian meatballs', 'cost'='$5 higher cost')
+dce_effects$term = factor(dce_effects$term, levels=c('Clean meatballs', 'Vegetarian meatballs', '$5 higher cost'))
+dce_effects$treat <- factor(dce_effects$treat, rev(unique(dce_effects$treat)))
+
+ci <- conf_interval(dce_effects$estimate, dce_effects$n, dce_effects$std.error, q=95)
+dce_effects[,colnames(ci)[1] ] <- ci[,1]
+dce_effects[,colnames(ci)[2] ] <- ci[,2]
+ci <- conf_interval(dce_effects$estimate, dce_effects$n, dce_effects$std.error, q=90)
+dce_effects[,colnames(ci)[1] ] <- ci[,1]
+dce_effects[,colnames(ci)[2] ] <- ci[,2]
+
+
+p1 <- ggplot(dce_effects, aes(y=estimate, x=treat, color=wave)) + 
+    geom_hline(yintercept=0, linetype='dashed', color='gray30') +
+    geom_errorbar(aes(ymin=lower_ci90, ymax=upper_ci90), width=0, size=0.8, position=position_dodge(width=0.7)) +
+    geom_errorbar(aes(ymin=lower_ci95, ymax=upper_ci95), width=0, size=0.3, position=position_dodge(width=0.7)) +
+    labs(y='Effect', x=NULL) +
+    labs(title='Appeal effects', size=20) +
+    geom_point(size=2.3, position=position_dodge(width=0.7)) + 
+    # geom_line(size=1, position=position_dodge(width=0.1)) + 
+    # facet_wrap(~color, ncol=3, scales='fixed') + 
+    guides(color=guide_legend(title=NULL, reverse=FALSE)) +
+    plot_theme +
+    coord_flip() + 
+    scale_colour_manual(values=c("gray80", "black")) + 
+    scale_y_continuous(breaks=round(seq(-0.3, 0.1, by=0.1), 1), limits=c(-0.3, 0.1)) +
+    # ylim(c(-0.5, 0.5)) +
+    facet_wrap(~term, scales='free_y', ncol=1, strip.position=c('top')) + 
+    theme(strip.background = element_blank(), strip.text=element_text(size=12, face='bold'), panel.spacing=unit(c(1,1), 'cm'), axis.text.y=element_text(size=11), axis.text.x=element_text(size=11), plot.margin=unit(c(0.5,0,0.5,0), "cm")) +  # plot.title = element_text(margin=margin(b=18, unit="pt")), 
+    guides(color=guide_legend(title=NULL, size=3))
+# fname <- 'dce_effects.png'
+# ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p, width=width-2, height=height+6, units="cm", dpi=dpi)
+
+
+# social information effects
+
+# wave 2
+temp_data = df_dce2[df_dce2$treat_social == 0,]
+mod_social0 = lm(choice ~ product + cost, data=temp_data)
+coefs_social0 = coeftest(mod_social0, cluster=temp_data$MTurkCode)
+coefs_social0 = tidy(coefs_social0)
+coefs_social0$treat = 'Unexposed'
+coefs_social0$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce2[df_dce2$treat_social == 1,]
+mod_social1 = lm(choice ~ product + cost, data=temp_data)
+coefs_social1 = coeftest(mod_social1, cluster=temp_data$MTurkCode)
+coefs_social1 = tidy(coefs_social1)
+coefs_social1$treat = 'Exposed'
+coefs_social1$n = len(unique(temp_data$MTurkCode))
+
+dce_effects_social2 = bind_rows(coefs_social0, coefs_social1)
+dce_effects_social2$wave = 'Wave 2'
+
+# wave 3
+temp_data = df_dce3[df_dce3$treat_social == 0,]
+mod_social0 = lm(choice ~ product + cost, data=temp_data)
+coefs_social0 = coeftest(mod_social0, cluster=temp_data$MTurkCode)
+coefs_social0 = tidy(coefs_social0)
+coefs_social0$treat = 'Unexposed'
+coefs_social0$n = len(unique(temp_data$MTurkCode))
+
+temp_data = df_dce3[df_dce3$treat_social == 1,]
+mod_social1 = lm(choice ~ product + cost, data=temp_data)
+coefs_social1 = coeftest(mod_social1, cluster=temp_data$MTurkCode)
+coefs_social1 = tidy(coefs_social1)
+coefs_social1$treat = 'Exposed'
+coefs_social1$n = len(unique(temp_data$MTurkCode))
+
+dce_effects_social3 = bind_rows(coefs_social0, coefs_social1)
+dce_effects_social3$wave = 'Wave 3'
+
+dce_effects_social = bind_rows(dce_effects_social2, dce_effects_social3)
+
+dce_effects_social = dce_effects_social[dce_effects_social$term!='(Intercept)',]
+dce_effects_social$term = recode(dce_effects_social$term, 'productclean'='Clean meatballs', 'productvegetarian'='Vegetarian meatballs', 'cost'='$5 higher cost')
+dce_effects_social$term = factor(dce_effects_social$term, levels=c('Clean meatballs', 'Vegetarian meatballs', '$5 higher cost'))
+
+ci <- conf_interval(dce_effects_social$estimate, dce_effects_social$n, dce_effects_social$std.error, q=95)
+dce_effects_social[,colnames(ci)[1] ] <- ci[,1]
+dce_effects_social[,colnames(ci)[2] ] <- ci[,2]
+ci <- conf_interval(dce_effects_social$estimate, dce_effects_social$n, dce_effects_social$std.error, q=90)
+dce_effects_social[,colnames(ci)[1] ] <- ci[,1]
+dce_effects_social[,colnames(ci)[2] ] <- ci[,2]
+
+
+p2 <- ggplot(dce_effects_social, aes(y=estimate, x=treat, color=wave)) + 
+    geom_hline(yintercept=0, linetype='dashed', color='gray30') +
+    geom_errorbar(aes(ymin=lower_ci90, ymax=upper_ci90), width=0, size=0.8, position=position_dodge(width=0.7)) +
+    geom_errorbar(aes(ymin=lower_ci95, ymax=upper_ci95), width=0, size=0.3, position=position_dodge(width=0.7)) +
+    labs(y='Effect', x=NULL) +
+    labs(title='Social information effects', size=20) +
+    geom_point(size=2.3, position=position_dodge(width=0.7)) + 
+    # geom_line(size=1, position=position_dodge(width=0.1)) + 
+    # facet_wrap(~color, ncol=3, scales='fixed') + 
+    guides(color=guide_legend(title=NULL, reverse=FALSE)) +
+    plot_theme +
+    coord_flip() + 
+    scale_colour_manual(values=c("gray80", "black")) + 
+    scale_y_continuous(breaks=round(seq(-0.3, 0.1, by=0.1), 1), limits=c(-0.3, 0.1)) +
+    # ylim(c(-0.5, 0.5)) +
+    facet_wrap(~term, scales='free_y', ncol=1, strip.position=c('top')) + 
+    theme(strip.background = element_blank(), strip.text=element_text(size=12, face='bold'), panel.spacing=unit(c(1,1), 'cm'), axis.text.y=element_text(size=11), axis.text.x=element_text(size=11), plot.margin=unit(c(0.5,0,0.5,0), "cm")) +
+    # guides(color=guide_legend(title=NULL, size=3))
+    guides(color=FALSE)
+
+legend <- get_legend(p1)
+p1 <- p1 + guides(color=FALSE)
+
+fname <- 'dce_effects.png'
+lay <- rbind(1,2,3)
+# lay <- rbind(
+#     c(1,2),
+#     c(3,3)
+# )
+
+ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), grid.arrange(p2, p1, legend, heights=c(7, 9, 1), widths=c(6), layout_matrix=lay), units="cm", dpi=dpi, height=height+15, width=width)

@@ -99,7 +99,7 @@
 \begin{centering}
     % \vspace{-10mm}
     \Large \textsc{\textcolor{red}{Preliminary and incomplete: please do not cite}} \\
-    \Large \textsc{\textcolor{red}{v0.4}} \\
+    \Large \textsc{\textcolor{red}{v0.41}} \\
     \vspace{10mm}
 \end{centering}
 
@@ -378,8 +378,13 @@ How contagious are anti-clean meat attitudes? As we've shown above, a sizable mi
 % DESCRIPTION OF TREATMENT
 Here, we examine the extent to which the naturalistic fallacy is contagious. Specifically, we examine the extent to which a small amount of negative social information -- in the form of negative sentiment towards clean meat expressed by respondents from a previous survey -- undermines consumer interest in clean meat products. As described above, respondents in this study were randomly assigned to be exposed to negative social information at the beginning of the treatment wave, consisting of five short quotes from respondents to a previous survey expressing negative sentiment towards clean meat (e.g. ``Our guts are not meant to digest unnatural things'').
 
-% DESCRIPTION OF EFFECTS
-The top panel of Figure \ref{fig:effects} displays the effects of negative social information on attitudes towards clean meat, comparing all respondents who were exposed to the negative quotes against unexposed respondents. Points in black represent the difference in means between exposed and unexposed respondents on changes in interest in clean meat and concerns about clean meat between waves 1 and 3. Gray points represent the differences in means between waves 1 and 2. The results are discouraging, showing that small amounts of social information from complete strangers significantly decreases respondents' interest in clean meat products, even when measured 10 weeks after treatment exposure. For instance, exposed respondents reported a significant decrease in willingness to try clean meat products (\textit{would eat}: $d=-0.31$; $p < 0.01$) and interest in purchasing meat products (\textit{interest purchase}: $d=-0.32$; $p < 0.01$) between waves 1 and 2 relative to unexposed respondents. In addition, negative social information led to increases in concerns about the health effects (\textit{concern unhealthy}: $d=0.07$; $p < 0.01$) and safety (\textit{concern unsafe}: $d=0.06$; $p < 0.01$) of clean meat products between waves 1 and 2.
+% DESCRIPTION OF EFFECTS ON DISCRETE CHOICE
+The top half of Figure \ref{fig:dce_effects} displays the effects of negative social information on respondents' stated preference for clean meat products based on the discrete choice experiment. In the panels titled ``Clean meatballs'' and ``Vegetarian meatballs'', points in black represent the average difference in the probability of choosing the product compared to ``conventional meatballs''. In panels titled ``\$5 higher cost'', points in black represent the average difference in the probability of choosing a product that is \$5 more expensive per pound. Whether or not respondents were exposed to negative social information, they were significantly less likely to say they would purchase clean meatballs relative to conventional meatballs. However, respondents exposed to negative social information expressed an even stronger preference for conventional meatballs over clean meatballs that unexposed participants. In wave 2, exposed participants were approximately 16 percentage points less likely to choose meatballs when they were ``clean'' rather than ``conventional'', compared to a difference of only 7.7 percentage points among unexposed participants (diff: 8.3; $p < 0.01$). These differences also emerged in wave 3, although at a substantially smaller scale -- such that ``clean'' meatballs were 21 percentage points less likely to be selected than ``conventional'' among exposed respondents, compared to 18.1 percentage points less likely among unexposed respondents (diff: 2.9; $p < 0.05$).
+
+% TODO: say something positive about greater willingness to try clean meat than veg meats.
+
+% DESCRIPTION OF EFFECTS ON INTEREST AND CONCERN
+Negative social information also had strong effects on respondents' self-reported interest in clean meat products and concerns about clean meat products. The top panel of Figure \ref{fig:effects} displays the effects of negative social information on attitudes towards clean meat, comparing all respondents who were exposed to the negative quotes against unexposed respondents. Points in black represent the difference in means between exposed and unexposed respondents on changes in interest in clean meat and concerns about clean meat between waves 1 and 3. Gray points represent the differences in means between waves 1 and 2. The results are discouraging, showing that small amounts of social information from complete strangers significantly decreases respondents' interest in clean meat products, even when measured 10 weeks after treatment exposure. For instance, exposed respondents reported a significant decrease in willingness to try clean meat products (\textit{would eat}: $d=-0.31$; $p < 0.01$) and interest in purchasing meat products (\textit{interest purchase}: $d=-0.32$; $p < 0.01$) between waves 1 and 2 relative to unexposed respondents. In addition, negative social information led to increases in concerns about the health effects (\textit{concern unhealthy}: $d=0.07$; $p < 0.01$) and safety (\textit{concern unsafe}: $d=0.06$; $p < 0.01$) of clean meat products between waves 1 and 2.
 
 Despite some attenuation, these effects persist when examining the corresponding changes between waves 1 and 3 (10 weeks after treatment). For instance, even after 10 weeks, exposed respondents reported a significant decrease in willingness to try clean meat products (\textit{would eat}: $d=-0.17$; $p < 0.01$) and interest in purchasing meat products (\textit{interest purchase}: $d=-0.13$; $p < 0.05$) between waves 1 and 2 relative to unexposed respondents. Exposed respondents also remained more likely to report concerns about the health effects of clean meat products (\textit{concern unhealthy}: $d=0.04$; $p < 0.09$). Exposed respondents were also somewhat more likely than unexposed respondents to report concerns about whether clean meat is natural (\textit{concern unnatural}; $d=0.04$; $p = 0.2$), although this difference does not reach conventional levels of statistical significance.
 
@@ -412,17 +417,32 @@ In the next subsection, we examine the effectiveness of these pro-clean meat app
 % \end{figure}
 % % ------------------------------------- %
 
+
 % ------------------------------------- %
 % FIGURE:
 \begin{figure}[h]
     \begin{center}
-    \includegraphics[width=0.9\linewidth]{\figurepath{effects.png}}
+    \includegraphics[width=0.7\linewidth]{\figurepath{dce_effects.png}}
     \end{center}
-    \caption{\label{fig:effects}\footnotesize \textbf{Effects of negative social information and pro-clean meat appeals, wave 2 vs. wave 3.} Points in black represent the difference in means between exposed and unexposed respondents on changes in interest in clean meat and concerns about clean meat between waves 1 and 3. Gray points represent the differences in means between waves 1 and 2. Horizontal bars represent 90\% and 95\% confidence intervals. Non-binary dependent variables are standardized to have mean equal to zero and variance equal to one. Treat article \#1: \textit{natural does not mean good} appeal; Treat article \#2: \textit{most foods are unnatural} appeal; Treat article \#3: \textit{social norm} appeal.}
+    \caption{\label{fig:dce_effects}\footnotesize \textbf{Effects on discrete choice.} Displays the differences between treatment conditions in respondents' willingness to select ``conventional meatballs'' vs. ``clean meatballs'' vs. ``vegetarian'' meatballs at different price points in a discrete choice experiment. In panels titled ``Clean meatballs'' and ``Vegetarian meatballs'', points in black represent the average difference in the probability of choosing the product compared to ``conventional meatballs''. In panels titled ``\$5 higher cost'', points in black represent the average difference in the probability of choosing a product that is \$5 more expensive per pound. Y-axis indicates treatment condition. Black points represent estimates from wave 3, gray points represent estimates from wave 2. Horizontal bars represent 90\% and 95\% confidence intervals. Treat article \#1: \textit{natural does not mean good} appeal; Treat article \#2: \textit{most foods are unnatural} appeal; Treat article \#3: \textit{social norm} appeal.}
     % \subcaption*{\small \textbf{Fig. \ref{fig:2A}.} }
 \end{figure}
 % ------------------------------------- %
 \FloatBarrier
+
+% ------------------------------------- %
+% FIGURE:
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[width=0.85\linewidth]{\figurepath{effects.png}}
+    \end{center}
+    \caption{\label{fig:effects}\footnotesize \textbf{Effects on interest in clean meat and concerns.} Points in black represent the difference in means between exposed and unexposed respondents on changes in interest in clean meat and concerns about clean meat between waves 1 and 3. Gray points represent the differences in means between waves 1 and 2. Horizontal bars represent 90\% and 95\% confidence intervals. Non-binary dependent variables are standardized to have mean equal to zero and variance equal to one. Treat article \#1: \textit{natural does not mean good} appeal; Treat article \#2: \textit{most foods are unnatural} appeal; Treat article \#3: \textit{social norm} appeal.}
+    % \subcaption*{\small \textbf{Fig. \ref{fig:2A}.} }
+\end{figure}
+% ------------------------------------- %
+\FloatBarrier
+
+
 
 
 
@@ -513,23 +533,12 @@ Turning to the three pro-clean meat appeals (rows 1-3), there is some evidence t
 
 \subsection{Did appeals influence the biggest meat-eaters?} 
 
-For clean meat products to achieve significant environmental, animal welfare, and health impacts, they will need to be adopted by typical meat-eaters rather than vegetarians and ``reducetarians'' who only eat a few servings of meat products each week. In Figure \ref{fig:subgroup_effects_meat}, we estimate the effects of negative social information and the three pro-clean meat appeals separately for individuals who reported eating 0-10 servings of meat per week at baseline, 10.5-17 servings of meat per week at baseline, and more than 17 servings of meat per week at baseline. Curiously, negative social information has weaker effects on interest in clean meat after 10 weeks among the top third of meat eaters (more than 17 servings), yet these differences are not consistent for all measures of interest in clean meat. Conversely, each of the three pro-clean meat appeals is marginally more effective at improving interest in clean meat among the bottom third of meat eaters (0-10 servings), although the differences in effectiveness are imprecisely estimated.
+For clean meat products to achieve significant environmental, animal welfare, and health impacts, they will need to be adopted by typical meat-eaters rather than vegetarians and ``reducetarians'' who only eat a few servings of meat products each week. In Figure \ref{fig:subgroup_effects_meat} (\nameref{sec:appendix}), we estimate the effects of negative social information and the three pro-clean meat appeals separately for individuals who reported eating 0-10 servings of meat per week at baseline, 10.5-17 servings of meat per week at baseline, and more than 17 servings of meat per week at baseline. Curiously, negative social information has weaker effects on interest in clean meat after 10 weeks among the top third of meat eaters (more than 17 servings), yet these differences are not consistent for all measures of interest in clean meat. Conversely, each of the three pro-clean meat appeals is marginally more effective at improving interest in clean meat among the bottom third of meat eaters (0-10 servings), although the differences in effectiveness are imprecisely estimated.
 
 % Here, we find that the pro-clean meat appeals had roughly similar effects across all four levels of weekly meat consumption. If anything, the effects are smaller among individuals who reported eating \textit{less} meat at baseline.
 
 % In addition, we do not find any evidence that individuals who eat vegetarian meats -- such as tofu and tempeh -- responded more positively to the appeals, adding further optimism that the pro-clean meat appeals have the potential to encourage meat-eaters to substitute clean meat products in place of conventional meat products.
 
-% ------------------------------------- %
-% FIGURE:
-\begin{figure}[h]
-    \begin{center}
-    \includegraphics[width=0.7\linewidth]{\figurepath{subgroup_effects_meat_chg_1_3.png}}
-    \end{center}
-    \caption{\label{fig:subgroup_effects_meat}\footnotesize \textbf{Heterogeneity in appeal effects by number of servings of meat consumed per week at baseline.} Horizontal bars represent 90\% and 95\% confidence intervals. Non-binary dependent variables are standardized to have mean equal to zero and variance equal to one. Treat article \#1: \textit{natural does not mean good} appeal; Treat article \#2: \textit{most foods are unnatural} appeal; Treat article \#3: \textit{social norm} appeal.}
-    % \subcaption*{\small \textbf{Fig. \ref{fig:2A}.} }
-\end{figure}
-% ------------------------------------- %
-\FloatBarrier
 
 % Third, are effects driven by individuals who are already sympathetic to the message of reducing conventional meat consumption?
 
@@ -678,9 +687,22 @@ Overall, we show that simple ``debunking'' appeals aimed at combating the natura
 % FIGURE:
 \begin{figure}[h]
     \begin{center}
-    \includegraphics[width=0.7\linewidth]{\figurepath{subgroup_effects_interest_3.png}}
+    \includegraphics[width=0.85\linewidth]{\figurepath{subgroup_effects_interest_3.png}}
     \end{center}
     \caption{\label{fig:subgroup_effects_interest}\footnotesize \textbf{Heterogeneity in appeal effects by baseline interest in clean meat.} Horizontal bars represent 90\% and 95\% confidence intervals. Non-binary dependent variables are standardized to have mean equal to zero and variance equal to one. Treat article \#1: \textit{natural does not mean good} appeal; Treat article \#2: \textit{most foods are unnatural} appeal; Treat article \#3: \textit{social norm} appeal.}
+    % \subcaption*{\small \textbf{Fig. \ref{fig:2A}.} }
+\end{figure}
+% ------------------------------------- %
+\FloatBarrier
+
+
+% ------------------------------------- %
+% FIGURE:
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[width=0.7\linewidth]{\figurepath{subgroup_effects_meat_chg_1_3_std.png}}
+    \end{center}
+    \caption{\label{fig:subgroup_effects_meat}\footnotesize \textbf{Heterogeneity in appeal effects by number of servings of meat consumed per week at baseline.} Horizontal bars represent 90\% and 95\% confidence intervals. Non-binary dependent variables are standardized to have mean equal to zero and variance equal to one. Treat article \#1: \textit{natural does not mean good} appeal; Treat article \#2: \textit{most foods are unnatural} appeal; Treat article \#3: \textit{social norm} appeal.}
     % \subcaption*{\small \textbf{Fig. \ref{fig:2A}.} }
 \end{figure}
 % ------------------------------------- %

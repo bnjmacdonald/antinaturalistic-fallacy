@@ -2,6 +2,9 @@
 # This file reads in and cleans the raw survey data for wave 2 of the
 # anti-naturalistic fallacy survey experiment.
 
+library(stringr)
+library(dplyr)
+
 source('utils.r')
 
 len <- length
@@ -306,6 +309,41 @@ for (i in 1:length(suff_cols)) {
 for (i in 1:len(suff_cols)) {
     var_names_dict[[suff_cols[i]]] <- colnames_suff[i]
 }
+
+# Discrete choice understanding (Q70): "You will now be asked some questions comparing clean meatballs, conventional meatballs, and veget..."
+var_names_dict[['Q70']] <- 'dce_understood'
+tab(df2$Q70)
+unique(df2$Q70, na.rm=FALSE)
+temp_Q70 <- as.numeric(ordered(df2$Q70, levels=c('No', 'Somewhat', 'Yes')))
+tab(df2$Q70, temp_Q70)
+df2$Q70 <- temp_Q70
+
+# Discrete choice (Q72 - Q94, every second Q): "Suppose you faced a choice between the following 3 products. Which would you buy?"
+dce_questions <- paste0('Q', seq(72, 94, 2))
+
+# str_replace_all('<div style="text-align: center;">1 lb. clean meatballs<br /> / $5</div>', '<[^>]*>', '')
+dce <- lapply(seq_along(dce_questions), FUN=function(i) {
+    d <- data.frame(str_split_fixed(str_replace_all(df2[, dce_questions[i]], "<[^>]*>", ""), ' \\/ \\$', 2), stringsAsFactors=FALSE)
+    colnames(d) <- paste0('dce_q', i, '_', c("product", "cost"))
+    d[d == ""] <- NA
+    d[,1] <- recode(d[,1], '1 lb. clean meatballs'='clean', '1 lb. conventional meatballs'='conventional', '1 lb. vegetarian meatballs'='vegetarian')
+    d[,2] <- as.numeric(d[,2])
+    if (any(rowSums(is.na(d)) == 1)) stop('Something went wrong with str_replace.')
+    return(d)
+})
+dce <- do.call('cbind', dce)
+
+stopifnot(nrow(dce) == nrow(df2))
+if (any(!rowSums(is.na(dce)) %in% c(12, 24))) stop('Problem with DCE cleaning.')
+tab(rowSums(is.na(dce)))
+
+for (i in 1:len(colnames(dce))) {
+    var_names_dict[[colnames(dce)[i]]] <- colnames(dce)[i]
+}
+
+df2 <- cbind(df2, dce)
+# dim(df2)
+
 
 
 # combines treatment variables with cleaned outcomes

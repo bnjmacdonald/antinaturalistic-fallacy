@@ -2,6 +2,10 @@
 # This file reads in and cleans the raw survey data for wave 2 of the
 # anti-naturalistic fallacy survey experiment.
 
+library(stringr)
+library(dplyr)
+
+
 source('utils.r')
 
 len <- length
@@ -9,7 +13,7 @@ tab <- function(..., exclude=NULL) table(..., exclude=exclude)
 
 # reads in followup data.
 # df <- read_csv_qualtrics('../data/raw/naturalistic_fallacy_treatment.csv')
-df <- read_csv_qualtrics('../data/raw/naturalistic_fallacy_followup_incomplete.csv')
+df <- read_csv_qualtrics('../data/raw/naturalistic_fallacy_followup.csv')
 # all(colnames(df) == colnames(df))
 dim(df)
 
@@ -283,15 +287,44 @@ for (i in 1:len(suff_cols)) {
 # TODO: clean open-ended.
 # Q20; Q24, Q74
 
-# TODO: clean discrete choice
-# Q26, ...
+# Discrete choice understanding (Q26): "You will now be asked some questions comparing clean meatballs, conventional meatballs, and veget..."
+var_names_dict[['Q26']] <- 'dce_understood'
+tab(df$Q26)
+unique(df$Q26, na.rm=FALSE)
+temp_Q26 <- as.numeric(ordered(df$Q26, levels=c('No', 'Somewhat', 'Yes')))
+tab(df$Q26, temp_Q26)
+df$Q26 <- temp_Q26
 
+# Discrete choice (Q28 - Q50, every second Q): "Suppose you faced a choice between the following 3 products. Which would you buy?"
+dce_questions <- paste0('Q', seq(28, 50, 2))
+
+# str_replace_all('<div style="text-align: center;">1 lb. clean meatballs<br /> / $5</div>', '<[^>]*>', '')
+dce <- lapply(seq_along(dce_questions), FUN=function(i) {
+    d <- data.frame(str_split_fixed(str_replace_all(df[, dce_questions[i]], "<[^>]*>", ""), ' \\/ \\$', 2), stringsAsFactors=FALSE)
+    colnames(d) <- paste0('dce_q', i, '_', c("product", "cost"))
+    d[d == ""] <- NA
+    d[,1] <- recode(d[,1], '1 lb. clean meatballs'='clean', '1 lb. conventional meatballs'='conventional', '1 lb. vegetarian meatballs'='vegetarian')
+    d[,2] <- as.numeric(d[,2])
+    if (any(rowSums(is.na(d)) == 1)) stop('Something went wrong with str_replace.')
+    return(d)
+})
+dce <- do.call('cbind', dce)
+
+stopifnot(nrow(dce) == nrow(df))
+if (any(!rowSums(is.na(dce)) %in% c(12, 24))) stop('Problem with DCE cleaning.')
+tab(rowSums(is.na(dce)))
+
+for (i in 1:len(colnames(dce))) {
+    var_names_dict[[colnames(dce)[i]]] <- colnames(dce)[i]
+}
+
+df <- cbind(df, dce)
 
 # saves cleaned data to disk.
 # print(names(var_names_dict))
 # print(names(var_names_dict) %in% colnames(df2))
 df_clean <- df[, names(var_names_dict)]
 colnames(df_clean) <- as.vector(unlist(var_names_dict))
-head(df_clean)
+# head(df_clean)
 
 write.csv(df_clean, '../data/cleaned/wave3_clean.csv')
