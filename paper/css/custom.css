@@ -1,0 +1,53 @@
+a,
+a::before,
+a::after {
+  color: blue !important;
+}
+
+.todo {
+  color: red !important;
+}
+
+ul {
+  margin-left: 2em;
+  padding-left: 0em;
+}
+
+ol {
+  margin-left: 2em;
+  padding-left: 0em;
+}
+
+
+ul[class="simple"] {
+  list-style-type: none;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+ul[class="simple"] li {
+  list-style-position: inside;
+  text-indent: -2em;
+}
+
+ol[class="simple"] li:before {
+  content: '';
+  font-style: italic;
+}
+
+ol[id=questions] li:before {
+  content: 'Q' counter(item, decimal) ': ' !important;
+  font-weight: bold;
+  counter-increment: item;
+}
+
+ol[id=questions] li {
+  list-style-position: inside;
+  text-indent: -2em;
+}
+
+ol[id=questions] {
+  counter-reset: item;
+  list-style-type: none;
+  /*margin-left: 3em;*/
+}
