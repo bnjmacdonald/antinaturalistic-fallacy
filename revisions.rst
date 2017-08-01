@@ -2,52 +2,15 @@
 Revisions
 *********
 
+This file contains disorganized thoughts on things that might be nice to incorporate int the paper, as well as some additional analyses that would be nice to conduct whenever we can find the time.
+
+See github issues for a more organized and complete list of open tickets. The contents below reflect ideas/thoughts that should probably be added to a github issue, but I have not yet taken the time to do so.
+
 Future analyses to do
 =====================
 
-* examine heterogeneous effects using WTP measures, rather than just interest and concern.
-* examine whether relationship between change in concern and change in interest in clean meat is driven by people *becoming concerned* or people *becoming unconcerned*.
-* Examine whether the "embrace unnatural" treatment led to more positive sentiment towards the naturalness of clean meat, even though it increased concerns about its naturalness. Could examine this by comparing sentiment across treatment groups, or even by examining whether the negative relationship between interest in clean meat and concerns about naturalness became weaker in this group.
-* correct for multiple hypothesis testing.
-* add figures showing effects on secondary outcomes.
-* construct measure of concerns from open-ended responses and then re-estimate results.
-* examine effects of appeals and social information on anciallary attitudes, such as attitudes towards factory farming.
+Note: see github issues with the ``data-analysis`` tag.
 
-Other tasks
-===========
-
-* multiple hypothesis testing correction.
-* remove outliers.
-* describe what findings mean for people marketing clean meat. (e.g. intensve experimentation, rely on closed network communities of adopters?).
-* provide better descriptions of outcome measures.
-* provide better descriptions of what treatment effects mean. (e.g. write mini-section)
-
-Cite other work on motivated reasoning etc
-==========================================
-
-Should cite more relevant work on motivated reasoning, asymmetric updating, etc.
-
-For instance:
-
-- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2821919
-- http://onlinelibrary.wiley.com/doi/10.1111/j.1467-9221.2010.00772.x/full
-- http://www.decisionsciencenews.com/sjdm/journal.sjdm.org/13/13313/jdm13313.pdf
-- https://www.aeaweb.org/articles?id=10.1257/mic.3.2.114
-- http://www.sciencedirect.com/science/article/pii/S0305750X0600218X
-- http://onlinelibrary.wiley.com/doi/10.1111/j.0272-4332.2004.00543.x/full
-- http://www.jneurosci.org/content/33/50/19406.short
-
-Belief formation, generally:
-
-- http://www.sciencedirect.com/science/article/pii/S1364661315002788
-- http://www.pnas.org/content/109/42/17058.short
-
-For more citations on political communication, see Thomas Leeper work. Also see: http://rkellygarrett.com/wp-content/uploads/2014/05/Garrett-and-Weeks-Promise-and-peril-of-real-time-corrections.pdf.
-
-Examine hetoergeneity in social information effects
-===================================================
-
-...
 
 Update literature review
 ========================
@@ -57,6 +20,8 @@ Relevant work:
 - importance of food naturalness, with extension to GMOs.
 - pro-vaccination experiments and related research that provides us with expecations on treatment effects (including social norms and cultural intuitions).
 - existing observational research on clean meat.
+
+Unstructured thoughts:
 
 Food "naturalness" is an important factor in consumer decisionmaking. (for a review, see Roman2017,Siegrist2008).
 
@@ -75,25 +40,11 @@ At the same time, however, the psychology of meat-eating poses unique barriers t
 (cite articles on psychology of eating meat).
 
 
-
 Other studies:
 
 - study on effects of informing consumers about beer manufacturing process: http://www.sciencedirect.com/science/article/pii/S0950329303000673. Main outcome seems to be difference between expected taste and reported taste.
 - study on consumer acceptance of use of recycled water in meat products: http://www.sciencedirect.com/science/article/pii/S0950329314000597.
 
-
-Update introduction with more context on harms of meat production
-=================================================================
-
-e.g. see: https://openletteranimalfarming.com/welcome/
-
-
-Describe survey timeline
-========================
-
-Baseline: 2017-03-07 -- 2017-03-18
-Treatment: 2017-03-07 -- 2017-04-18
-Followup: 2017-06-19 -- 2017-06-26
 
 DONE
 ====
