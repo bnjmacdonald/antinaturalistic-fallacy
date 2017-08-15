@@ -101,6 +101,42 @@ df$treat_article = factor(df$treat_article, levels=c(0,1,2,3), labels=appeal_nam
 df_dce$treat_social = factor(df_dce$treat_social, levels=c(0,1), labels=social_names, exclude=NA)
 df_dce$treat_article = factor(df_dce$treat_article, levels=c(0,1,2,3), labels=appeal_names, exclude=NA)
 
+
+# SURVEY ATTRITION
+# ----------------
+wave1_vars = str_detect(colnames(df), '_wave1$')
+wave2_vars = str_detect(colnames(df), '_wave2$')
+wave3_vars = str_detect(colnames(df), '_wave3$')
+n_wave1 = sum(rowSums(!is.na(df[,wave1_vars]), na.rm=TRUE) > 0)
+n_wave2 = sum(rowSums(!is.na(df[,wave2_vars]), na.rm=TRUE) > 0)
+n_wave3 = sum(rowSums(!is.na(df[,wave3_vars]), na.rm=TRUE) > 0)
+print(c(n_wave1, n_wave2, n_wave3))
+print(n_wave2 / n_wave1)
+print(n_wave3 / n_wave1)
+
+data_for_paper[['x0_1n']] = n_wave1
+data_for_paper[['x0_2n']] = n_wave2
+data_for_paper[['x0_3n']] = n_wave3
+data_for_paper[['x0_2p']] = (n_wave2 / n_wave1) * 100
+data_for_paper[['x0_3p']] = (n_wave3 / n_wave1) * 100
+
+
+# REMOVES RESPONSES WHERE TREATMENT IS NA
+# ---------------------------------------
+# (these come from wave 1, before treatment was assigned)
+df = df %>% filter(!is.na(treat_article) & !is.na(treat_social))
+df_dce = df_dce %>% filter(!is.na(treat_article) & !is.na(treat_social))
+stopifnot(sum(is.na(df[,treatments])) == 0)
+stopifnot(sum(is.na(df_dce[,treatments])) == 0)
+
+# dim(df_dce)
+# dim(df)
+# tab(df[,treatments[1]])
+# tab(df[,treatments[2]])
+# tab(df_dce[,treatments[1]])
+# tab(df_dce[,treatments[2]])
+
+
 # subsets to control observations only.
 df_control = df[df$treat_article == 'control' & df$treat_social == 'not_exposed' & !is.na(df$treat_article) & !is.na(df$treat_social), ]
 dim(df_control)
@@ -169,24 +205,6 @@ print(arm_sizes)
 
 # number of control participants.
 # data_for_paper[['x1']] = arm_sizes %>% filter(treat_article == 0, treat_social == 0) %>% select(n) %>% as.numeric(.)
-
-# SURVEY ATTRITION
-# ----------------
-wave1_vars = str_detect(colnames(df), '_wave1$')
-wave2_vars = str_detect(colnames(df), '_wave2$')
-wave3_vars = str_detect(colnames(df), '_wave3$')
-n_wave1 = sum(rowSums(!is.na(df[,wave1_vars]), na.rm=TRUE) > 0)
-n_wave2 = sum(rowSums(!is.na(df[,wave2_vars]), na.rm=TRUE) > 0)
-n_wave3 = sum(rowSums(!is.na(df[,wave3_vars]), na.rm=TRUE) > 0)
-print(c(n_wave1, n_wave2, n_wave3))
-print(n_wave2 / n_wave1)
-print(n_wave3 / n_wave1)
-
-data_for_paper[['x0_1n']] = n_wave1
-data_for_paper[['x0_2n']] = n_wave2
-data_for_paper[['x0_3n']] = n_wave3
-data_for_paper[['x0_2p']] = (n_wave2 / n_wave1) * 100
-data_for_paper[['x0_3p']] = (n_wave3 / n_wave1) * 100
 
 # PRETREATMENT BALANCE
 # --------------------
@@ -281,14 +299,14 @@ summary_stats_control = df_control %>%
 print(summary_stats_control)
 
 # % of participants entering email address.
-data_for_paper[['x1']] = summary_stats %>% filter(outcome == paste('notified_available_yes', suffix, sep='_')) %>% mutate(pct=mean * 100) %>% select(pct) %>% sprintf(fmt="%.2f", .)
+data_for_paper[['x1']] = summary_stats %>% filter(outcome == paste('notified_available_yes', suffix, sep='_')) %>% mutate(pct=mean * 100) %>% select(pct) %>% as.numeric(.)
 
 # % of participants answering "probably yes" or "definitely" yes to would_eat
-data_for_paper[['x2']] = sprintf(fmt="%.2f", mean(df[,paste('would_eat', suffix, sep='_')]>3, na.rm=TRUE) * 100)
+data_for_paper[['x2']] = mean(df[,paste('would_eat', suffix, sep='_')]>3, na.rm=TRUE) * 100
 
 # % of participants answering "extremely interested" or "very interested"
 # in clean meat.
-data_for_paper[['x3']] = sprintf(fmt="%.2f", mean(df[,paste('interest_purchase', suffix, sep='_')]>3, na.rm=TRUE) * 100)
+data_for_paper[['x3']] = mean(df[,paste('interest_purchase', suffix, sep='_')]>3, na.rm=TRUE) * 100
 
 # plots univariate descriptives for key outcome variables for wave 1.
 melted = df %>% select_(.dots=temp_outcomes) %>% gather_(key='outcome', value='value', temp_outcomes, na.rm=TRUE)
@@ -296,13 +314,13 @@ melted = melted %>% group_by(outcome, value) %>% summarize(count=n()) %>% mutate
 melted$outcome = to_title(str_replace(melted$outcome, sprintf('_%s$', suffix), ''))
 p = ggplot(melted, aes(x=factor(value), y=pct, group=outcome)) + 
     geom_bar(stat='identity', fill=tableau10_cb[3]) +
-    facet_wrap(~outcome, scales='free_x', ncol=2) +
+    facet_wrap(~outcome, scales='free_x', ncol=5) +
     plot_theme + 
     scale_y_continuous(breaks=round(seq(0, 100, by=20), 5), limits=c(0, 100)) +
     labs(x=NULL, y='% of Respondents') +
     theme(strip.background = element_blank())
 fname = sprintf('interest_%s.png', suffix)
-ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p, width=width, height=height+8, units="cm", dpi=dpi)
+ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p, width=width+18, height=height, units="cm", dpi=dpi)
 
 
 # RELATIONSHIPS BETWEEN MEASURES OF INTEREST IN CLEAN MEAT
@@ -399,10 +417,10 @@ concern_effects[,colnames(ci)[1] ] = ci[,1]
 concern_effects[,colnames(ci)[2] ] = ci[,2]
 
 # extracts specific results for paper.
-data_for_paper[['x4']] = concern_effects %>% filter(outcome == paste('would_eat', suffix, sep='_'), term == paste('concern_unnatural', str_replace(suffix, '_std', ''), sep='_')) %>% select(estimate) %>% abs(.) %>% sprintf(fmt="%.2f", .)
+data_for_paper[['x4']] = concern_effects %>% filter(outcome == paste('would_eat', suffix, sep='_'), term == paste('concern_unnatural', str_replace(suffix, '_std', ''), sep='_')) %>% select(estimate) %>% abs(.) %>% as.numeric(.)
 data_for_paper[['x4_1']] = concern_effects %>% filter(outcome == paste('would_eat', suffix, sep='_'), term == paste('concern_unnatural', str_replace(suffix, '_std', ''), sep='_')) %>% mutate(p.value_str=pvalue_to_str(p.value)) %>% select(p.value_str) %>% as.character(.)
 
-data_for_paper[['x5']] = concern_effects %>% filter(outcome == paste('interest_purchase', suffix, sep='_'), term == paste('concern_unnatural', str_replace(suffix, '_std', ''), sep='_')) %>% select(estimate) %>% abs(.) %>% sprintf(fmt="%.2f", .)
+data_for_paper[['x5']] = concern_effects %>% filter(outcome == paste('interest_purchase', suffix, sep='_'), term == paste('concern_unnatural', str_replace(suffix, '_std', ''), sep='_')) %>% select(estimate) %>% abs(.) %>% as.numeric(.)
 data_for_paper[['x5_1']] = concern_effects %>% filter(outcome == paste('interest_purchase', suffix, sep='_'), term == paste('concern_unnatural', str_replace(suffix, '_std', ''), sep='_')) %>% mutate(p.value_str=pvalue_to_str(p.value)) %>% select(p.value_str) %>% as.character(.)
 
 # cleans up variable names for plotting.
@@ -443,27 +461,27 @@ for (i in 1:len(concern_vars)) {
 data_for_paper[['x8_1']] = sum(completed_all_waves)
 data_for_paper[['x8_2']] = means_temp['concern_unnatural_wave1'] * 100
 data_for_paper[['x8_3']] = means_temp['concern_unnatural_wave3'] * 100
-data_for_paper[['x8_4']] = sprintf('%.2f', abs(data_for_paper[['x8_3']] - data_for_paper[['x8_2']]))
+data_for_paper[['x8_4']] = abs(data_for_paper[['x8_3']] - data_for_paper[['x8_2']])
 data_for_paper[['x8_5']] = pvalue_to_str(pvalues_temp['concern_unnatural', 'pvalue'])
 
 data_for_paper[['x9_1']] = means_temp['concern_unsafe_wave1'] * 100
 data_for_paper[['x9_2']] = means_temp['concern_unsafe_wave3'] * 100
-data_for_paper[['x9_3']] = sprintf('%.2f', abs(data_for_paper[['x9_2']] - data_for_paper[['x9_1']]))
+data_for_paper[['x9_3']] = abs(data_for_paper[['x9_2']] - data_for_paper[['x9_1']])
 data_for_paper[['x9_4']] = pvalue_to_str(pvalues_temp['concern_unsafe', 'pvalue'])
 
 data_for_paper[['x10_1']] = means_temp['concern_unhealthy_wave1'] * 100
 data_for_paper[['x10_2']] = means_temp['concern_unhealthy_wave3'] * 100
-data_for_paper[['x10_3']] = sprintf('%.2f', abs(data_for_paper[['x10_2']] - data_for_paper[['x10_1']]))
+data_for_paper[['x10_3']] = abs(data_for_paper[['x10_2']] - data_for_paper[['x10_1']])
 data_for_paper[['x10_4']] = pvalue_to_str(pvalues_temp['concern_unhealthy', 'pvalue'])
 
 data_for_paper[['x11_1']] = means_temp['concern_cost_wave1'] * 100
 data_for_paper[['x11_2']] = means_temp['concern_cost_wave3'] * 100
-data_for_paper[['x11_3']] = sprintf('%.2f', abs(data_for_paper[['x11_2']] - data_for_paper[['x11_1']]))
+data_for_paper[['x11_3']] = abs(data_for_paper[['x11_2']] - data_for_paper[['x11_1']])
 data_for_paper[['x11_4']] = pvalue_to_str(pvalues_temp['concern_cost', 'pvalue'])
 
 data_for_paper[['x12_1']] = means_temp['concern_taste_wave1'] * 100
 data_for_paper[['x12_2']] = means_temp['concern_taste_wave3'] * 100
-data_for_paper[['x12_3']] = sprintf('%.2f', abs(data_for_paper[['x12_2']] - data_for_paper[['x12_1']]))
+data_for_paper[['x12_3']] = abs(data_for_paper[['x12_2']] - data_for_paper[['x12_1']])
 data_for_paper[['x12_4']] = pvalue_to_str(pvalues_temp['concern_taste', 'pvalue'])
 
 
@@ -973,7 +991,7 @@ effects$outcome = to_title(effects$outcome)
 effects$outcome = str_replace(effects$outcome, '^Concern |^Benefit ', '')
 effects$outcome = str_replace(effects$outcome, 'Interest Purchase', 'Int. Purch.')
 
-effects$term = factor(to_title(effects$term))
+effects$term = factor(paste0('Effects of "', to_title(effects$term), '"'))
 effects$wave = factor(effects$wave)
 
 # effects$size = ifelse(str_detect(effects$term, "Article"), 1.0, 2.0)
@@ -1068,7 +1086,7 @@ coef_table$outcome = to_title(coef_table$outcome)
 coef_table$outcome = str_replace(coef_table$outcome, '^Concern |^Benefit ', '')
 coef_table$outcome = str_replace(coef_table$outcome, 'Interest Purchase', 'Int. Purch.')
 
-coef_table$treatment = to_title(coef_table$treatment)
+coef_table$treatment = paste0('Effects of "', to_title(coef_table$treatment), '"')
 coef_table$moderator = to_title(coef_table$moderator)
 
 plots = coef_table %>%
@@ -1208,20 +1226,24 @@ coef_table2$treatment = to_title(coef_table2$treatment)
 coef_table3$treatment = to_title(coef_table3$treatment)
 
 # plots the results.
-p1 = gg_subgroup_coefplot(coef_table1, x='estimate', y='moderator', color='y') + guides(color=guide_legend(reverse=TRUE, title=NULL)) +
+p1 = gg_subgroup_coefplot(coef_table1, x='estimate', y='moderator', color='y') + guides(color=guide_legend(reverse=TRUE, title='Outcome: ')) +
     facet_wrap(~treatment, ncol=1) + 
-    labs(title=paste0(to_title(str_replace(moderator1, '_wave1_cut$', '')), ' (wave 1)'), y='ATE', x=NULL)
+    labs(title=paste0('Effects by baseline\n"', to_title(str_replace(moderator1, '_wave1_cut$', '')), '"'), y='ATE', x='Baseline (wave 1) value')
 p2 = gg_subgroup_coefplot(coef_table2, x='estimate', y='moderator', color='y') +
     facet_wrap(~treatment, ncol=1) + 
-    labs(title=paste0(to_title(str_replace(moderator2, '_wave1_cut$', '')), ' (wave 1)'), y='ATE', x=NULL)
+    labs(title=paste0('Effects by baseline\n"', to_title(str_replace(moderator2, '_wave1_cut$', '')), '"'), y='ATE', x=NULL)
 p3 = gg_subgroup_coefplot(coef_table3, x='estimate', y='moderator', color='y') +
     facet_wrap(~treatment, ncol=1) + 
-    labs(title=paste0(to_title(str_replace(moderator3, '_wave1_cut$', '')), ' (wave 1)'), y='ATE', x=NULL)
+    labs(title=paste0('Effects by baseline\n"', to_title(str_replace(moderator3, '_wave1_cut$', '')), '"'), y='ATE', x=NULL)
 legend = get_legend(p1)
 
-add_this_plot_theme = function(p) p + theme(strip.background=element_blank(), plot.title=element_text(size=10)) + 
-    scale_y_continuous(breaks=round(seq(-0.8, 0.8, by=0.4), 2), limits=c(-0.8, 0.8)) +
-    guides(color=FALSE)
+add_this_plot_theme = function(p) p + theme(
+    strip.background=element_blank(), 
+    plot.title=element_text(size=12),
+    strip.text.x = element_text(size=11)
+  ) + 
+  scale_y_continuous(breaks=round(seq(-0.8, 0.8, by=0.4), 2), limits=c(-0.8, 0.8)) +
+  guides(color=FALSE)
 # p = p + labs(title=to_title(y)) + guides(color=guide_legend(title=paste0(to_title(moderator),': '), reverse=FALSE))
 p1 = add_this_plot_theme(p1)
 p2 = add_this_plot_theme(p2) + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank())
@@ -1270,13 +1292,14 @@ coef_table = bind_rows(coef_table, coef_table_social)
 
 # cleans up text for plotting
 coef_table$y = to_title(coef_table$y)
-coef_table$treatment = to_title(coef_table$treatment)
+coef_table$treatment = paste0('Effects of "', to_title(coef_table$treatment), '"')
 
 # plots the results.
 p = gg_subgroup_coefplot(coef_table, x='estimate', y='moderator', color='y')
 p = p + facet_wrap(~treatment, ncol=1) + 
     theme(strip.background = element_blank()) + 
-    labs(title='Baseline servings of meat per week', y='ATE', x=NULL) + 
+    labs(x='Baseline servings of meat per week', y='ATE', title=NULL) + 
+    guides(color=guide_legend(reverse=TRUE, title='Outcome: ')) + 
     scale_y_continuous(breaks=round(seq(-0.8, 0.8, by=0.4), 2), limits=c(-0.8, 0.8))
 fname = paste0('subgroup_effects_meat_', suffix, '.png')
 ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p, width=width, height=height+5, units="cm", dpi=dpi)
@@ -1310,15 +1333,16 @@ coef_table = bind_rows(coef_table, coef_table_social)
 # cleans up text for plotting
 coef_table$y = to_title(coef_table$y)
 coef_table$moderator = recode(coef_table$moderator, '0'='Not concerned', '1'='Concerned')
-coef_table$treatment = to_title(coef_table$treatment)
+coef_table$treatment = paste0('Effects of "', to_title(coef_table$treatment), '"')
 
 p = gg_subgroup_coefplot(coef_table, x='estimate', y='moderator', color='y')
 p = p + facet_wrap(~treatment, ncol=1) + 
     theme(strip.background = element_blank()) + 
-    labs(title=sprintf('Baseline %s', to_title(str_replace(moderator, '_wave1', ''))), y='ATE', x=NULL) + 
+    labs(x=sprintf('Baseline %s', to_title(str_replace(moderator, '_wave1', ''))), y='ATE', title=NULL) + 
+    guides(color=guide_legend(reverse=TRUE, title='Outcome: ')) + 
     scale_y_continuous(breaks=round(seq(-0.8, 0.8, by=0.4), 2), limits=c(-0.8, 0.8))
 fname = paste0('subgroup_effects_', moderator, '_', suffix, '.png')
-ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p, width=width, height=height+5, units="cm", dpi=dpi)
+ggsave(filename=paste(fig_output_dir, '/', fname, sep=''), p, width=width+3, height=height+5, units="cm", dpi=dpi)
 
 
 # EXPORTS DATA FOR PAPER
@@ -1342,9 +1366,9 @@ write_json = function(d, path, ...){
 }
 
 # rounds all numbers to N digits
-max_digits = 2
+max_digits = 1
 to_trim = sapply(data_for_paper, is.numeric) & str_detect(data_for_paper, sprintf('\\.\\d{%s,}', max_digits))
-data_for_paper_trimmed = lapply(seq_along(data_for_paper), function(i) ifelse(to_trim[i], sprintf('%.2f', data_for_paper[[i]]), data_for_paper[[i]]))
+data_for_paper_trimmed = lapply(seq_along(data_for_paper), function(i) ifelse(to_trim[i], sprintf('%.1f', data_for_paper[[i]]), data_for_paper[[i]]))
 names(data_for_paper_trimmed) = names(data_for_paper)
 
 # exorts data.

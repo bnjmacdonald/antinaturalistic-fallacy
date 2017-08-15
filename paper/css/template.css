@@ -42,11 +42,12 @@ a[href^="http"]::after {
   content: ''; }
 
 body {
-  column-count: 2;
+  column-count: 1;
   column-gap: balance;
   column-gap: 0.33in;
-  line-height: 1.17;
+  line-height: 2.0;
   font-family: "Times New Roman", Times, serif;
+  font-size: 12pt
   hyphens: auto;
   text-align: justify; }
   body > :first-child {
@@ -61,7 +62,7 @@ caption {
     content: "Table " counter(table) ". "; }
 
 .references {
-  font-size: 75%; }
+  font-size: 85%; }
 
 .quotes {
   margin-top: 10px;
@@ -108,6 +109,10 @@ figure {
   counter-increment: figure;
   margin: 1.333em 0 2.333em;
   text-align: justify; }
+
+.figure {
+  text-align: center;
+}
 
 figcaption {
   font-size: 85%;
@@ -164,7 +169,7 @@ html {
 p {
   /*line-height: 1.17;*/
   margin: 0 0 0.5em;
-  text-indent: 0; }
+  text-indent: 2.5em; }
 
 q::before {
   content: '“'; }
@@ -226,8 +231,9 @@ td {
 @page {
   size: 8.5in 11in;
   margin: 1in 0.75in 1in 0.75in;
-  @bottom {
-    content: "Page " counter(page) " of " counter(pages); }
+  @top {
+    content: counter(page); 
+    text-align: right; }
   @footnotes {
     border-top: 0.5pt solid black;
     margin-top: 2em;
@@ -382,6 +388,10 @@ header {
     margin: 2em 0;
     text-align: center; }
 
+.abstract {
+  line-height: 1.17;
+  margin: 0.7in; }
+
 .title {
   column-span: all;
   font-family: Helvetica, sans-serif;
@@ -389,6 +399,15 @@ header {
   margin: 0 0 .333em;
   text-align: center;
   text-transform: none; }
+
+.subtitle {
+  column-span: all;
+  font-family: Helvetica, sans-serif;
+  font-size: 18pt;
+  margin: 0 0 .333em;
+  text-align: center;
+  text-transform: none; }
+
 
 .authors {
   column-gap: 0; }
