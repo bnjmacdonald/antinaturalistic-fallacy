@@ -47,7 +47,7 @@ body {
   column-gap: 0.33in;
   line-height: 2.0;
   font-family: "Times New Roman", Times, serif;
-  font-size: 14pt
+  font-size: 12pt;
   hyphens: auto;
   text-align: justify; }
   body > :first-child {
@@ -351,10 +351,10 @@ h6:not(.counter-skip)::before {
   content: "" "" counter(section, decimal) "." counter(subsection, decimal) "." counter(subsubsection, decimal) "." counter(subsubsection, decimal) "." counter(subsubsubsection, decimal) "." counter(subsubsubsubsection, decimal) ""; }
 
 .page-break-after {
-  break-after: always; }
+  page-break-after: always; }
 
 .page-break-before {
-  break-after: always; }
+  page-break-before: always; }
 
 h1,
 h2 {

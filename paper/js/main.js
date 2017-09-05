@@ -3,7 +3,9 @@ var imgPath = "../output/figures";
 
 window.onload = function() {
   insertReferences();
-  insertDate();
+  if (document.getElementById('date')) {
+    insertDate();
+  }
   insertData(data);
   addFigurePath(imgPath);
 }
@@ -53,12 +55,12 @@ function insertReferences() {
 
 function insertDate() {
   var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  element = document.getElementById('date');
   var date = new Date();
   var month = monthNames[date.getUTCMonth()];
   var day = date.getUTCDate();
   var year = date.getUTCFullYear();
   dateStr = month + " " + day + ", " + year;
+  element = document.getElementById('date');
   element.innerHTML = dateStr;
 }
 
