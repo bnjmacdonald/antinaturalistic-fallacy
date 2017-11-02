@@ -6,6 +6,39 @@ This file contains disorganized thoughts on things that might be nice to incorpo
 
 See github issues for a more organized and complete list of open tickets. The contents below reflect ideas/thoughts that should probably be added to a github issue, but I have not yet taken the time to do so.
 
+To read
+=======
+
+October 2017 revisions
+======================
+
+Why psychology? 
+
+1. "embracing unnatural" effects must be explained by psychological mechanisms (dissonance, cultural intuitions)
+2. Public resistance to clean meat is psychological. We need more psychologists studying this stuff.
+3. 
+
+What to shorten:
+
+- introduction:
+    
+    - shorten description of treatments
+    - combine results and contributions
+
+- methods:
+    - combine description of surveys and interventions.
+
+- results:
+
+    - remove email address paragraph.
+    - remove qualitative paragraph? Or rebrand as heterogeneous responses.
+    - shorten "caveat" paragraph on non-experimental manipulation.
+    - relegate "effects of repeated exposure" to supplementary materials.
+    - add "This figure shows that XXXX" to main figures.
+    - shorten 3.4.
+    - shorten 3.5.1
+
+
 Future analyses to do
 =====================
 
