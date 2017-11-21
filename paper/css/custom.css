@@ -8,6 +8,11 @@ a::after {
   color: red !important;
 }
 
+.figcaption {
+  font-size: 1.2em;
+  text-align: center;
+}
+
 ul {
   margin-left: 2em;
   padding-left: 0em;

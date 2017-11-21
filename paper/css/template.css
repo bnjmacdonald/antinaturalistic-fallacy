@@ -48,8 +48,8 @@ body {
   line-height: 2.0;
   font-family: "Times New Roman", Times, serif;
   font-size: 12pt;
-  hyphens: auto;
-  text-align: justify; }
+  hyphens: none;
+  text-align: left; }
   body > :first-child {
     counter-reset: table figure page 1; }
 
@@ -108,6 +108,7 @@ figure {
   /*border: 1px solid black;*/
   counter-increment: figure;
   margin: 1.333em 0 2.333em;
+  hyphens: none;
   text-align: justify; }
 
 .figure {

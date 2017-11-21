@@ -38,6 +38,48 @@ What to shorten:
     - shorten 3.4.
     - shorten 3.5.1
 
+Todos:
+
+    - [ ] methodological details appendix (see page 7 of submission guidelines)
+        - [ ] include full text of surveys;
+        - [ ] include full text of treatments;
+    - [ ] move footnotes to end of article.
+    - [ ] add acknowledgements?
+    - [ ] move tables to after references.
+    - [ ] reformat figures.
+    - [ ] add consumer behavior references.
+    - [ ] Awkwardly, while I previously advocated for not too many decimal points, having 2 decimal points for WTP would read a bit better for me, since it is denominated in $.
+    - [ ] May be worth looking through and modifying Ffq to FFQ, as in R graphics -- many people may be unused to this acronym and think it just a typo or something unless capitalized, which would be unfortunate.
+    - [X] Figure 5 legend has a typo: "See for further details."
+    - [X] Figure 4 strikes me as a bit strange, because it shows some slight imbalance but then asks to be trusted that this doesn't matter. I might either cut it altogether (a lot of papers unfortunately don't show baseline balance) or include some robustness check showing that it doesn't matter, but not this intermediate thing, but that's just a suggestion.
+    - [ ] remove citations on page 2.
+    - [ ] citations:
+        - chan 2017
+    - [ ] rename supplementary materials.
+
+JCP checklist:
+
+- [/] One author has been designated as the corresponding author with contact details (e-mail address, full postal address, and phone number);
+- [ ] Manuscript (structure, format, citations, reference list, etc.) conforms to APA style, and length requirements are respected;
+- [ ] All references mentioned in the reference list are cited in the text, and vice versa;
+- [/] Manuscript has been copy-edited (spell-checked and grammar-checked) carefully;
+- [X] Authors have reviewed the Journal's "Scientific Standards and Expectations" and agree to abide by them;
+- [ ] A Methodological Detail Appendix (MDA) is ready to be submitted with the paper, including information such as: Full phrasing of the questions and scales used for the reported findings;
+- [ ] Full text of the key scenarios or vignettes used;
+- NA Sample images of advertising stimuli used;
+- NA Screencapture of computer interface;
+- [X] Additional statistical details useful for reanalysis as described in the appendix of this document;
+- [X] Elaboration on pertinent details of the procedure (e.g., brief description of the filler task).
+- [ ] All necessary files are ready to be uploaded:
+    - [ ] Text of the letter to the editor;
+    - [ ] Disidentified manuscript, including abstract and keywords;
+    - [ ] Separate title page with author information and author note;
+    - [ ] All figures in a single file with a separate figure caption page;
+    - [ ] All tables (including title, description, footnotes) in a single file;
+    - [ ] Methodological Detail Appendix;
+- [X] Other Permission has been obtained for use of copyrighted material from other sources (including the Web). Color figures are clearly marked as being intended for color reproduction on the Web (free of charge) and in print, or to be reproduced in color only on the Web (free of charge) and in black-and-white in print. If only color on the Web is required, black-and white versions of the figures are also supplied for printing purposes. For any further information please visit our customer support site at http://support.elsevier.com.
+
+3736
 
 Future analyses to do
 =====================
