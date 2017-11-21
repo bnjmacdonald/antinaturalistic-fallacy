@@ -422,8 +422,7 @@ header {
   .author a {
     color: inherit;
     text-decoration: none; }
-  .author > :first-child,
-  .author > :last-child {
+  .author > :first-child {
     font-size: 12pt; }
 
 .copyright {
