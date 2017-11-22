@@ -1366,9 +1366,9 @@ write_json = function(d, path, ...){
 }
 
 # rounds all numbers to N digits
-max_digits = 1
+max_digits = 2
 to_trim = sapply(data_for_paper, is.numeric) & str_detect(data_for_paper, sprintf('\\.\\d{%s,}', max_digits))
-data_for_paper_trimmed = lapply(seq_along(data_for_paper), function(i) ifelse(to_trim[i], sprintf('%.1f', data_for_paper[[i]]), data_for_paper[[i]]))
+data_for_paper_trimmed = lapply(seq_along(data_for_paper), function(i) ifelse(to_trim[i], sprintf('%.2f', data_for_paper[[i]]), data_for_paper[[i]]))
 names(data_for_paper_trimmed) = names(data_for_paper)
 
 # exorts data.

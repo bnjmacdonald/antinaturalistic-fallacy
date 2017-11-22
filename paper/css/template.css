@@ -131,7 +131,7 @@ h3,
 h4,
 h5,
 h6 {
-  text-align: left; 
+  text-align: left;
   break-after: avoid;
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
@@ -231,15 +231,17 @@ td {
 @page {
   size: 8.5in 11in;
   margin: 1in 0.75in 1in 0.75in;
-  @top {
-    content: counter(page); 
+  @top-left {
+    content: "OVERCOMING THE NATURALISTIC HEURISTIC"; }
+  @top-right {
+    content: counter(page);
     text-align: right; }
   @footnotes {
     border-top: 0.5pt solid black;
     margin-top: 2em;
     columns: 1;
     padding-top: 1em; } }
-        
+
 
 span[class=".citet"] > a,
 span[class=".citep"] > a,

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Effective strategies for overcoming the naturalistic heuristic: An experiment on consumer acceptance of <q>clean</q> meat</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/template.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script> -->
+  <script type="text/javascript" src="../output/data_for_paper.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <style>
+    figure { page-break-after: always }
+  </style>
+</head>
+
+<body>
+<div>
+  <header class="counter-skip">
+    <h1 class="title counter-skip">Supplementary Materials</h1>
+  </header>
+  <section id="main">
+    <figure id="fig-balance" width="100%">
+      <figcaption class="figcaption">Experimental balance on pre-treatment variables.</figcaption>
+      <div class="figure">
+        <img class="needs-src" value="balance_completed_all_waves.png" width="50%">
+      </div>
+      <figcaption>Experimental balance on pre-treatment variables.
+        <span style="font-weight: normal;">Displays pre-treatment balance on variables measured in wave 1 among respondents who completed all three survey waves (n=<span class="data" id="x0_3n"></span>). Each cell represents the p-value for a t-test in the difference in means between the control group and the experimental arm (x-axis) on a particular variable measured at baseline (y-axis). As shown, the experimental arms are well balanced with the control group on nearly all pre-treatment covariates. While there is some imbalance in self-reported servings of meat at baseline in the <i>debunk unnatural</i> and <i>descriptive norm</i> arms, correcting for this difference does not change the results reported above in any substantive way.</span>
+      </figcaption>
+    </figure>
+
+    <figure id="fig-effects-dce-or" width="100%" class="col-span">
+      <figcaption class="figcaption">Treatment effects (discrete choice, odds ratio).</figcaption>
+      <div class="figure">
+        <img class="needs-src" value="dce_effects_or.png" width="100%">
+      </div>
+      <figcaption>Treatment effects (discrete choice, odds ratio).
+        <span style="font-weight: normal;">Displays odds ratios of selecting clean (or vegetarian) meatballs relative to conventional meatballs among respondents in each experimental cell, with results shown separately for waves 2 and 3. A value of 1.0 on the x-axis indicates that respondents were indifferent between clean (or vegetarian) meatballs and conventional meatballs. A value of 0.6 indicates that respondents were only 60% as likely to choose clean (or vegetarian) meatballs relative to conventional meatballs. Horizontal bars represent 90% and 95% confidence intervals. Results estimated using conditional logistic regression.</span>
+        <!-- In the panels titled <q>Clean meatballs</q> and <q>Vegetarian meatballs</q>, points in black represent the average difference in the probability of choosing the product compared to <q>conventional meatballs</q>. In panels titled <q>$5 higher cost</q>, points in black represent the average difference in the probability of choosing a product that is $5 more expensive per pound. Whether or not respondents were exposed to anti-acceptance social information, they were significantly less likely to say they would purchase clean meatballs relative to conventional meatballs.  -->
+      </figcaption>
+    </figure>
+
+    <figure id="fig-subgroup-effects-interest" width="100%" class="col-span">
+      <figcaption class="figcaption">Heterogeneity in treatment effects by baseline interest in clean meat.</figcaption>
+      <div class="figure">
+        <img class="needs-src" value="subgroup_effects_interest_chg_wave1_wave3_std.png" width="100%">
+      </div>
+      <figcaption>Heterogeneity in treatment effects by baseline interest in clean meat.
+        <span style="font-weight: normal;">Displays ATEs of each treatment appeal and negative social information (<q>exposed</q>) on interest in clean meat. Results are estimated separately conditional on low vs. neutral vs. high levels of baseline interest in clean meat. Column 1 displays treatment effects of the three treatment appeals (and the effects of negative social information) on three measures of interest in clean meat &mdash; <i>would eat</i> (<q>Would you eat this product?</q>, 1-5 scale), <i>interest purchase</i> (<q>how interested are you in purchasing the clean meat product you just read about?</q>, 1-5 scale), and <i>feel</i> (<q>How do you feel about clean meat products?</q>, 1-7 scale) &mdash; where results are estimated separately for respondents with low vs. neutral vs. high levels of baseline <i>feel</i>. Columns 2 and 3 display the same effects, except that results are broken down by baseline <i>interest purchase</i> and baseline <i>would eat</i>, respectively. All dependent variables are measured as the change between waves 1 and 3. Points represent ATEs, surrounded by represent 90% and 95% confidence intervals.</span>
+      </figcaption>
+    </figure>
+
+    <figure id="fig-subgroup-effects-meat" width="100%">
+      <figcaption class="figcaption">Heterogeneity in appeal effects by number of servings of meat consumed per week at baseline.</figcaption>
+      <div class="figure">
+        <img class="needs-src" value="subgroup_effects_meat_chg_wave1_wave3_std.png" width="60%">
+      </div>
+      <figcaption>Heterogeneity in appeal effects by number of servings of meat consumed per week at baseline.
+        <span style="font-weight: normal;">Displays ATEs of each treatment appeal and negative social information (<q>exposed</q>) on interest in clean meat. Results are estimated separately conditional on low vs. moderate vs. high levels of baseline self-reported servings of meat consumed per week. Dependent variables are: <i>would eat</i> (<q>Would you eat this product?</q>, 1-5 scale), <i>interest purchase</i> (<q>how interested are you in purchasing the clean meat product you just read about?</q>, 1-5 scale), and <i>feel</i> (<q>How do you feel about clean meat products?</q>, 1-7 scale). All dependent variables are standardized to have mean equal to zero and variance equal to one, and are measured as the change between waves 1 and 3. Panel 1 (top) displays treatment effects of the <i>debunk unnatural</i> appeal; Panel 2 displays treatment effects of the <i>descriptive norm</i> appeal; Panel 3 displays treatment effects of the <i>embrace unnatural</i> appeal; Panel 4 (bottom) displays treatment effects of exposure to negative social information. Points represent ATEs, surrounded by represent 90% and 95% confidence intervals.</span>
+      </figcaption>
+    </figure>
+
+    <figure id="fig-subgroup-effects-unnatural" width="100%">
+      <figcaption class="figcaption">Heterogeneity in appeal effects by baseline concern about clean meat naturalness.</figcaption>
+      <div class="figure">
+        <img class="needs-src" value="subgroup_effects_concern_unnatural_wave1_chg_wave1_wave3.png" width="60%">
+      </div>
+      <figcaption>Heterogeneity in appeal effects by baseline concern about clean meat naturalness.
+        <span style="font-weight: normal;">Displays ATEs of each treatment appeal and negative social information (<q>exposed</q>) on interest in clean meat, conditional on whether respondents were concerned about the naturalness of clean meat at baseline (y-axis). Dependent variables are: <i>would eat</i> (<q>Would you eat this product?</q>, 1-5 scale), <i>interest purchase</i> (<q>how interested are you in purchasing the clean meat product you just read about?</q>, 1-5 scale), and <i>feel</i> (<q>How do you feel about clean meat products?</q>, 1-7 scale). All dependent variables are standardized to have mean equal to zero and variance equal to one, and are measured as the change between waves 1 and 3. Panel 1 (top) displays treatment effects of the <i>debunk unnatural</i> appeal, estimated separately for respondents who were concerned versus not concerned about the naturalness of clean meat at baseline; Panel 2 displays treatment effects of the <i>descriptive norm</i> appeal; Panel 3 displays treatment effects of the <i>embrace unnatural</i> appeal; Panel 4 (bottom) displays treatment effects of exposure to negative social information. Points represent ATEs, surrounded by represent 90% and 95% confidence intervals.</span>
+      </figcaption>
+    </figure>
+
+    <figure id="fig-subgroup-effects-negative" width="100%">
+      <figcaption class="figcaption">Heterogeneity in appeal effects by exposure to anti-acceptance social information.</figcaption>
+      <div class="figure">
+        <img class="needs-src" value="subgroup_effects_negative_chg_wave1_wave3.png" width="55%">
+      </div>
+      <figcaption>Heterogeneity in appeal effects by exposure to anti-acceptance social information.
+        <span style="font-weight: normal;">Displays the effects of each treatment appeal, estimated separately for respondents exposed to anti-acceptance social information versus respondents that were not exposed. Panel 1 (top) displays treatment effects of the <i>debunk unnatural</i> appeal; Panel 2 displays treatment effects of the <i>descriptive norm</i> appeal; Panel 3 (bottom) displays treatment effects of the <i>embrace unnatural</i> appeal. The <q>concerns</q> and <q>benefits</q> variables are dichotomous, representing whether a respondent raised the concern/benefit (<i>y=1</i>) or not (<i>y=0</i>). Interest variables include: <i>would eat</i> (<q>Would you eat this product?</q>, 1-5 scale), <i>interest purchase</i> (<q>how interested are you in purchasing the clean meat product you just read about?</q>, 1-5 scale), and <i>feel</i> (<q>How do you feel about clean meat products?</q>, 1-7 scale). The three interest variables are standardized to have mean equal to zero and variance equal to one. All dependent variables are measured as the change between waves 1 and 3. Points represent ATEs, surrounded by represent 90% and 95% confidence intervals.</span>
+      </figcaption>
+    </figure>
+
+    <figure id="fig-interest" width="100%">
+      <figcaption class="figcaption">Descriptive statistics: Interest in clean meat products.</figcaption>
+      <div class="figure">
+        <img class="needs-src" value="interest_wave1.png" width="80%">
+      </div>
+      <figcaption>Descriptive statistics: Interest in clean meat products.
+        <span style="font-weight: normal;">Displays distributions of measures of interest in clean meat, as measured at baseline. Interest variables include: <i>entered email</i> (whether or not respondent entered email after <q>yes</q> response to <q>Would you like to be notified when clean meat products are available in your area?</q>), <i>feel</i> (<q>How do you feel about clean meat products?</q>, 1-7 scale), <i>interest purchase</i> (<q>how interested are you in purchasing the clean meat product you just read about?</q>, 1-5 scale), <i>notified available (yes)</i> (<q>Would you like to be notified when clean meat products are available in your area?</q>), <i>would eat</i> (<q>Would you eat this product?</q>, 1-5 scale).</span>
+      </figcaption>
+    </figure>
+  </section>
+</div>
+</body>
+</html>
