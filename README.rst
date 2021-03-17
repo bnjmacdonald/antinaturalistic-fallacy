@@ -5,8 +5,7 @@ README
 
 This project examines the effects of negative social information and pro-clean meat appeals on interest in clean meat products. 
 
-* Link to github: https://github.com/bnjmacdonald/antinaturalistic_fallacy
-* Link to documentation: <NA>
+* Working paper: https://osf.io/ndtr2/
 
 All of the code for data analysis is stored in ``analysis``. Data files are in ``data``. These files contain the merged, cleaned, and deidentified, produced from ``bin/clean.sh`` which executes ``cleaning_wave1.r``, ``cleaning_wave2.r``, ``cleaning_wave3.r``, and ``merging_waves.r``.
 
