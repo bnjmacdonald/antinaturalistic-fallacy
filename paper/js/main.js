@@ -30,7 +30,7 @@ function addFigurePath(path) {
 function insertData(data) {
   var elements = document.getElementsByClassName('data');
   if (elements.length) {
-    for(var i = 0; i < elements.length; i++) {
+    for (var i = 0; i < elements.length; i++) {
       id = elements[i].getAttribute('id');
       if (data.hasOwnProperty(id)) {
         console.log("Replacing innterHTML of #" + id + " with " + data[id]);
@@ -63,4 +63,3 @@ function insertDate() {
   element = document.getElementById('date');
   element.innerHTML = dateStr;
 }
-

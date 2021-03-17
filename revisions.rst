@@ -9,6 +9,17 @@ See github issues for a more organized and complete list of open tickets. The co
 To read
 =======
 
+- https://www.sciencedirect.com/science/article/pii/S0028393217303718
+- https://psyarxiv.com/48tcp/
+
+- http://onlinelibrary.wiley.com/doi/10.1002/mar.20256/full
+- http://www.sciencedirect.com/science/article/pii/S016748700900018X
+- http://onlinelibrary.wiley.com/doi/10.1002/mar.20157/full
+- https://www.sciencedirect.com/science/article/pii/B9780128110317000078
+- https://link.springer.com/article/10.1023%2FA%3A1010950406128?LI=true
+- 
+
+
 October 2017 revisions
 ======================
 
@@ -40,46 +51,48 @@ What to shorten:
 
 Todos:
 
-    - [ ] methodological details appendix (see page 7 of submission guidelines)
-        - [ ] include full text of surveys;
-        - [ ] include full text of treatments;
-    - [ ] move footnotes to end of article.
+    - [X] methodological details appendix (see page 7 of submission guidelines)
+        - [X] include full text of surveys;
+        - [X] include full text of treatments;
+    - [ ] move footnotes to end of document.
     - [ ] add acknowledgements?
-    - [ ] move tables to after references.
-    - [ ] reformat figures.
-    - [ ] add consumer behavior references.
-    - [ ] Awkwardly, while I previously advocated for not too many decimal points, having 2 decimal points for WTP would read a bit better for me, since it is denominated in $.
-    - [ ] May be worth looking through and modifying Ffq to FFQ, as in R graphics -- many people may be unused to this acronym and think it just a typo or something unless capitalized, which would be unfortunate.
-    - [X] Figure 5 legend has a typo: "See for further details."
-    - [X] Figure 4 strikes me as a bit strange, because it shows some slight imbalance but then asks to be trusted that this doesn't matter. I might either cut it altogether (a lot of papers unfortunately don't show baseline balance) or include some robustness check showing that it doesn't matter, but not this intermediate thing, but that's just a suggestion.
-    - [ ] remove citations on page 2.
-    - [ ] citations:
-        - chan 2017
-    - [ ] rename supplementary materials.
+    - [X] move tables/figures to new file.
+    - [X] reformat figures.
+    - [/] add consumer behavior references.
+    - comments from Eva:
+        - [X] Awkwardly, while I previously advocated for not too many decimal points, having 2 decimal points for WTP would read a bit better for me, since it is denominated in $.
+        - [ ] May be worth looking through and modifying Ffq to FFQ, as in R graphics -- many people may be unused to this acronym and think it just a typo or something unless capitalized, which would be unfortunate.
+        - [X] Figure 5 legend has a typo: "See for further details."
+        - [X] Figure 4 strikes me as a bit strange, because it shows some slight imbalance but then asks to be trusted that this doesn't matter. I might either cut it altogether (a lot of papers unfortunately don't show baseline balance) or include some robustness check showing that it doesn't matter, but not this intermediate thing, but that's just a suggestion.
+    - [X] remove citations on page 2.
+    - [X] add new citations
 
 JCP checklist:
 
 - [/] One author has been designated as the corresponding author with contact details (e-mail address, full postal address, and phone number);
-- [ ] Manuscript (structure, format, citations, reference list, etc.) conforms to APA style, and length requirements are respected;
-- [ ] All references mentioned in the reference list are cited in the text, and vice versa;
+- [X] Manuscript (structure, format, citations, reference list, etc.) conforms to APA style, and length requirements are respected;
+- [X] All references mentioned in the reference list are cited in the text, and vice versa;
 - [/] Manuscript has been copy-edited (spell-checked and grammar-checked) carefully;
 - [X] Authors have reviewed the Journal's "Scientific Standards and Expectations" and agree to abide by them;
-- [ ] A Methodological Detail Appendix (MDA) is ready to be submitted with the paper, including information such as: Full phrasing of the questions and scales used for the reported findings;
-- [ ] Full text of the key scenarios or vignettes used;
-- NA Sample images of advertising stimuli used;
-- NA Screencapture of computer interface;
+- [X] A Methodological Detail Appendix (MDA) is ready to be submitted with the paper, including information such as: Full phrasing of the questions and scales used for the reported findings;
+- [X] Full text of the key scenarios or vignettes used;
+- [NA] Sample images of advertising stimuli used;
+- [NA] Screencapture of computer interface;
 - [X] Additional statistical details useful for reanalysis as described in the appendix of this document;
 - [X] Elaboration on pertinent details of the procedure (e.g., brief description of the filler task).
-- [ ] All necessary files are ready to be uploaded:
-    - [ ] Text of the letter to the editor;
-    - [ ] Disidentified manuscript, including abstract and keywords;
-    - [ ] Separate title page with author information and author note;
-    - [ ] All figures in a single file with a separate figure caption page;
-    - [ ] All tables (including title, description, footnotes) in a single file;
-    - [ ] Methodological Detail Appendix;
+- [X] All necessary files are ready to be uploaded:
+    - [X] Text of the letter to the editor;
+    - [X] Disidentified manuscript, including abstract and keywords;
+    - [X] Separate title page with author information and author note;
+    - [X] All figures in a single file with a separate figure caption page;
+    - [X] All tables (including title, description, footnotes) in a single file;
+    - [X] Methodological Detail Appendix;
 - [X] Other Permission has been obtained for use of copyrighted material from other sources (including the Web). Color figures are clearly marked as being intended for color reproduction on the Web (free of charge) and in print, or to be reproduced in color only on the Web (free of charge) and in black-and-white in print. If only color on the Web is required, black-and white versions of the figures are also supplied for printing purposes. For any further information please visit our customer support site at http://support.elsevier.com.
 
-3736
+word count: 3736
+
+recommended referees: 
+    - 
 
 Future analyses to do
 =====================

@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo $DIR
 cd $DIR
 
-cd ../analysis
+cd analysis
 Rscript main_analysis.r
 
 cd ../paper
